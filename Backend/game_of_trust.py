@@ -60,10 +60,13 @@ def log_outcome(player1, player2, decision1, decision2, outcome):
     with open('game_log.txt', 'a') as f:
         f.write(str(log_entry) + '\n')
 
+# Temporary function to get decision of players
+def get_decision():
+    return player1.decide(), player2.decide()
+
 # Main function to run the game
 def trust_game(player1, player2):
-    decision1 = player1.decide()
-    decision2 = player2.decide()
+    decision1, decision2 = get_decision()
 
     print(f"{player1.name} decided to {decision_to_string(decision1)}")
     print(f"{player2.name} decided to {decision_to_string(decision2)}")
