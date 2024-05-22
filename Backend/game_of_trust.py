@@ -32,7 +32,10 @@ def decision_to_string(decision):
     return 'cooperate' if decision == COOPERATE else 'cheat'
 
 # Define the possible outcomes
-def get_outcome(player1_decision, player2_decision):
+def get_outcome(player1, player2, player1_decision, player2_decision):
+    print(f"{player1.name} decided to {decision_to_string(player1_decision)}")
+    print(f"{player2.name} decided to {decision_to_string(player2_decision)}")
+
     if player1_decision == COOPERATE and player2_decision == COOPERATE:
         return (2, 2)  # Both cooperate
     elif player1_decision == COOPERATE and player2_decision == CHEAT:
@@ -68,10 +71,7 @@ def get_decision():
 def trust_game(player1, player2):
     decision1, decision2 = get_decision()
 
-    print(f"{player1.name} decided to {decision_to_string(decision1)}")
-    print(f"{player2.name} decided to {decision_to_string(decision2)}")
-
-    outcome = get_outcome(decision1, decision2)
+    outcome = get_outcome(player1, player2, decision1, decision2)
     print(f"Outcome: {player1.name} gets {outcome[0]} points, {player2.name} gets {outcome[1]} points")
 
     log_outcome(player1, player2, decision1, decision2, outcome)
