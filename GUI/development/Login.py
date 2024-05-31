@@ -26,12 +26,13 @@ def load_user_data(file_path):
     users = {}
     with open(file_path, 'r') as file:
         for line in file:
-            user, pwd = line.strip().split(',')
+            # user, pwd = line.strip().split(',')
+            id,user, pwd, coins = line.strip().split(',')
             users[user] = pwd
     return users
 
 # Load user data
-user_data = load_user_data('users.txt')
+user_data = load_user_data('database.txt')
 
 def login_clicked():
     """ callback ketika tombol login diklik

@@ -2,7 +2,8 @@ import socket
 import json
 
 def socket_client():
-    target_ip = "10.8.102.108"
+    # target_ip = "10.8.102.108"
+    target_ip = "10.6.103.222"
     user_input = input("Enter data to send to the Socket server: ")
     data_list = user_input.split(',')
     json_data = json.dumps(data_list)
