@@ -1,12 +1,16 @@
 # Nama File : MainPage.py
 # Programmer : Bostang Palaguna (13220055)
-# Tanggal : Rabu, 22 Mei 2024
+# Tanggal : Rabu, 22 Mei 2024; Jumat, 31 Mei 2024
 
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
+from Profile import show_profile_page
+from StartGame import show_start_game_page
+from Leaderboard import show_leaderboard_page
 
-def show_main_page(root):
+# def show_main_page(root, show_login_page_func):
+def show_main_page(root, show_login_page_func):
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -17,44 +21,20 @@ def show_main_page(root):
     title_label = ttk.Label(root, text="Main Page", font=("Helvetica", 24))
     title_label.pack(pady=20)
 
-    start_game_button = ttk.Button(root, text="Start Game", command=lambda: show_start_game_page(root))
+    # Logout button
+    logout_button = ttk.Button(root, text="Logout", command=lambda: show_login_page_func(root))
+    logout_button.place(relx=0.9, rely=0.05, anchor="ne")
+
+    # Start Game button
+    start_game_button = ttk.Button(root, text="Start Game", command=lambda: show_start_game_page(root, show_main_page, show_login_page_func))
     start_game_button.pack(fill='x', expand=True, padx=20, pady=5)
 
-    leaderboard_button = ttk.Button(root, text="Leaderboard", command=lambda: show_leaderboard_page(root))
+    # Leaderboard button
+    leaderboard_button = ttk.Button(root, text="Leaderboard", command=lambda: show_leaderboard_page(root, show_main_page, show_login_page_func))
     leaderboard_button.pack(fill='x', expand=True, padx=20, pady=5)
 
-    profile_button = ttk.Button(root, text="Profile", command=lambda: show_profile_page(root))
+    # Profile button
+    profile_button = ttk.Button(root, text="Profile", command=lambda: show_profile_page(root, show_main_page, show_login_page_func))
     profile_button.pack(fill='x', expand=True, padx=20, pady=5)
 
-def show_start_game_page(root):
-    for widget in root.winfo_children():
-        widget.destroy()
-
-    root.title('Start Game')
-    title_label = ttk.Label(root, text="Start Game Page", font=("Helvetica", 18))
-    title_label.pack(pady=20)
-
-    back_button = ttk.Button(root, text="Back to Main", command=lambda: show_main_page(root))
-    back_button.pack(fill='x', expand=True, padx=20, pady=5)
-
-def show_leaderboard_page(root):
-    for widget in root.winfo_children():
-        widget.destroy()
-
-    root.title('Leaderboard')
-    title_label = ttk.Label(root, text="Leaderboard Page", font=("Helvetica", 18))
-    title_label.pack(pady=20)
-
-    back_button = ttk.Button(root, text="Back to Main", command=lambda: show_main_page(root))
-    back_button.pack(fill='x', expand=True, padx=20, pady=5)
-
-def show_profile_page(root):
-    for widget in root.winfo_children():
-        widget.destroy()
-
-    root.title('Profile')
-    title_label = ttk.Label(root, text="Profile Page", font=("Helvetica", 18))
-    title_label.pack(pady=20)
-
-    back_button = ttk.Button(root, text="Back to Main", command=lambda: show_main_page(root))
-    back_button.pack(fill='x', expand=True, padx=20, pady=5)
+# END_OF_FILE[]
