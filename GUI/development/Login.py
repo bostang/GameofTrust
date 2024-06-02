@@ -4,13 +4,14 @@
     # Minggu, 12 Mei 2024
     # Rabu, 22 Mei 2024
     # Jumat, 31 Mei 2024
+    # Minggu, 2 Juni 2024
 
 # import library
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo, showerror
 from MainPage import show_main_page  # Import fungsi untuk menampilkan halaman utama
-
+from client1 import http_client
 
 def create_login_page(root):
     """Create the login page."""
@@ -27,12 +28,14 @@ def create_login_page(root):
         users = {}
         with open(file_path, 'r') as file:
             for line in file:
-                id,user, pwd, coins = line.strip().split(',')
-                users[user] = pwd
+                data = line.strip().split(',')
+                if len(data) == 2:  # memastikan hanya entri yang valid yang diambil
+                    user, pwd = data
+                    users[user] = pwd
         return users
 
     # Load user data
-    user_data = load_user_data('database.txt')
+    user_data = load_user_data('users.txt')
 
     def login_clicked():
         """ callback ketika tombol login diklik
@@ -51,6 +54,38 @@ def create_login_page(root):
                 title='Error',
                 message='Invalid username or password'
             )
+
+    def register_clicked():
+        """ callback ketika tombol register diklik
+        """
+        user = username.get()
+        pwd = password.get()
+
+        # Re-load user data from users.txt to check for existing user
+        user_data = load_user_data('users.txt')
+        
+        if user in user_data:
+            showerror(
+                title='Error',
+                message='Username already exists'
+            )
+        else:
+            with open('users.txt', 'a') as file:
+
+                ### UNTUK YANSEN : data siap ke database sudah standby di new_database_data ###
+                # new_database_data = f'12,{user},{pwd}'
+                # http_client(new_database_data)
+                # print(new_database_data)
+                file.write(f'{user},{pwd}\n')
+            # Reload user data after registering new user
+            user_data = load_user_data('users.txt')
+            showinfo(
+                title='Information',
+                message='Registration successful!'
+            )
+            # Optionally clear the entry fields after registration
+            username.set('')
+            password.set('')
 
     # Sign in frame
     signin = ttk.Frame(root)
@@ -75,11 +110,15 @@ def create_login_page(root):
     login_button = ttk.Button(signin, text="Login", command=login_clicked)
     login_button.pack(fill='x', expand=True, pady=10)
 
+    # register button
+    register_button = ttk.Button(signin, text="Register", command=register_clicked)
+    register_button.pack(fill='x', expand=True, pady=10)
+
 def show_login_page(root):
     """Show the login page."""
     create_login_page(root)
     root.title('Sign In')
-    root.geometry("300x150")
+    root.geometry("300x200")
     root.resizable(False, False)
     root.iconbitmap('./img/logo_2.ico')  # Menambahkan logo
 

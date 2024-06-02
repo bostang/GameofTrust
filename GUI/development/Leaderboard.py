@@ -4,6 +4,9 @@
 
 import tkinter as tk
 from tkinter import ttk
+import display_leaderboard as dl
+# import ServerGOT as sg
+import client1 as c
 
 def show_leaderboard_page(root, show_main_page_func, show_login_page_func):
     for widget in root.winfo_children():
@@ -12,6 +15,10 @@ def show_leaderboard_page(root, show_main_page_func, show_login_page_func):
     root.title('Leaderboard')
     title_label = ttk.Label(root, text="Leaderboard Page", font=("Helvetica", 18))
     title_label.pack(pady=20)
+
+    data = eval(c.http_client()) # dari string diubah ke array
+    print(data)
+    dl.show_leaderboard_page(root,data)
 
     back_button = ttk.Button(root, text="Back to Main", command=lambda: show_main_page_func(root, show_login_page_func))
     back_button.pack(fill='x', expand=True, padx=20, pady=5)
