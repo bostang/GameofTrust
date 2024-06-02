@@ -15,7 +15,14 @@ logging.basicConfig(
 )
 
 data = [
-    {'id': 1, 'username': 'yansen','password':'phoenix' , 'coin': 30}
+    {'id': 1, 'username': 'yansen','password':'phoenix' , 'coin': 30},
+    {'id': 2, 'username': 'bostang','password':'tes' , 'coin': 20},
+    {'id': 3, 'username': 'kunga','password':'tes' , 'coin': 10},
+    {'id': 4, 'username': 'lord','password':'tes' , 'coin': 9999},
+    {'id': 5, 'username': 'newbie','password':'tes' , 'coin': 0},
+    {'id': 6, 'username': 'bostang','password':'tes' , 'coin': 5},
+    {'id': 7, 'username': 'bostang','password':'tes' , 'coin': 9},
+    
 ]
 def write_to_json_file(filename, data):
     with open(filename, 'w') as file:
@@ -40,31 +47,24 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
             raise ValueError
         print(int(user_data_list[0]))
         msg_id = int(user_data_list[0])
-        # user_id = validation(username, password)
-        username = user_data_list[1]
-        password = user_data_list[2]
-        is_valid, user_id = validation(username, password)
-        print(is_valid)
+        # user_id = validation(username, password
         if msg_id == 1: #login request
+            username = user_data_list[1]
+            password = user_data_list[2]
+            is_valid, user_id = validation(username, password, msg_id)
             # username = user_data_list[1]
             # password = user_data_list[2]
             if is_valid:
                 print("Authentication successful")
                 response = f'hello user {user_id}: {username}'
-                
             else:
-                # response = f'hello, username: {username} and password: {password} already been used'
+                response = f'hello, username: {username} and password: {password} already been used'
                 print("Authentication failed")
-            # while (validation(user_data_list[1],user_data_list[2])):
-            #     print("error")
-            # username = user_data_list[1]
-            # print('username:',username)
-            # password = user_data_list[2]
-            # print('password:',password)
             
         elif msg_id == 12: #sign in request
-            # username = user_data_list[1]
-            # password = user_data_list[2]
+            username = user_data_list[1]
+            password = user_data_list[2]
+            is_valid, user_id = validation(username, password, msg_id)
             if is_valid:
                 print("Username-password sudah digunakan")
                 response = f'hello, username: {username} and password: {password} already been used'
@@ -82,15 +82,17 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         elif msg_id == 2: #leaderboard request
             username = user_data_list[1]
             data = read_from_json_file('database.json')
-            leaderboard = []
-            while len(leaderboard) <= 10:   
-                biggest = 0 
-                biggest_id = 0
-                for user in data:
-                    if user['coin'] > biggest:
-                        biggest = user['coin']
-                        biggest_id = user
-                
+            sorted_data = sorted(data, key=lambda x: x["coin"], reverse=True)[:10]
+            leaderboard = [[item['username'], item['coin']] for item in sorted_data]
+            i = 0
+            username_coin = 0
+            for user in sorted_data:
+                i += 1
+                if user["username"] == username:
+                    username_coin = user["coin"]
+                    ranking = i
+            player_leaderboard = [username,username_coin,ranking]
+            response = f'21,{leaderboard},{player_leaderboard}'
                 
             # leaderboard
         logging.info(f'Received data: {user_data}')
@@ -102,12 +104,15 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(response.encode())
 
-def validation(username, password):
+def validation(username, password,id):
     data = read_from_json_file('database.json')
     print("Data from JSON file:", data)  # Debugging statement
     for user in data:
-        if user['username'] == username or user['password'] == password:
+        if user['username'] == username and user['password'] == password and id == 1:
             return True, user['id']
+        elif user['username'] == username and id == 2:
+            return True, user['id']
+            
     return False, user['id']
 
 # def validation(username,password):
