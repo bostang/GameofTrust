@@ -54,6 +54,18 @@ def play_game(player1_id, player2_id, decision1, decision2):
     })
     return response.json()
 
+def request_random_match():
+    pass
+
+def request_host_match():
+    pass
+
+def request_join_match():
+    pass
+
+def request_leaderboard():
+    pass
+
 if __name__ == "__main__":
     
     # name, id = authenticate()
@@ -63,13 +75,13 @@ if __name__ == "__main__":
         menu_input = input(menu)
         print("-------------")
         if (menu_input == "1"):
-            pass
+            request_random_match()
         elif (menu_input == "2"):
-            pass
+            request_host_match()
         elif (menu_input == "3"):
-            pass
+            request_join_match()
         elif (menu_input == "4"):
-            pass
+            request_leaderboard()
         elif (menu_input == "5"):
             print("Disconnecting...")
             break
