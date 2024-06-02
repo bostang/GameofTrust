@@ -1,0 +1,29 @@
+2024-06-02 17:54:26,612 INFO Received GET request
+2024-06-02 17:54:51,198 INFO Received GET request
+2024-06-02 17:55:06,316 INFO Connected by ('10.8.104.239', 52083)
+2024-06-02 17:55:06,316 INFO Received data: a
+2024-06-02 17:55:24,124 INFO Received GET request
+2024-06-02 17:55:31,869 INFO Received GET request
+2024-06-02 17:55:56,842 INFO Received GET request
+2024-06-02 17:56:14,642 INFO Received GET request
+2024-06-02 18:04:28,604 INFO Received GET request
+2024-06-02 18:07:09,308 INFO Received GET request
+2024-06-02 18:08:32,769 INFO Received GET request
+2024-06-02 18:08:32,769 INFO Received data: ["3", "yansen", "0"]
+2024-06-02 18:09:38,059 INFO Received GET request
+2024-06-02 18:09:46,373 INFO Received GET request
+2024-06-02 18:09:52,376 INFO Received data: ["3", "yansen", "0"]
+2024-06-02 18:12:48,433 INFO Received GET request
+2024-06-02 18:12:50,435 INFO Received data: ["3", "yansen", "0"]
+2024-06-02 18:14:26,872 INFO Received GET request
+2024-06-02 18:14:32,151 INFO Connected by ('10.8.104.239', 52368)
+2024-06-02 18:14:32,183 INFO Received data: 3,lord,0
+2024-06-02 18:15:27,874 INFO Received data: ["3", "yansen", "0"]
+2024-06-02 18:15:40,394 INFO Received GET request
+2024-06-02 18:16:41,395 INFO Received data: ["3", "yansen", "0"]
+2024-06-02 18:16:41,395 INFO Received GET request
+2024-06-02 18:17:42,396 INFO Received data: ["3", "lord", "0"]
+2024-06-02 18:21:40,672 INFO Received GET request
+2024-06-02 18:22:41,674 INFO Received data: ["3", "yansen", "0"]
+2024-06-02 18:22:41,675 INFO Received GET request
+2024-06-02 18:23:42,676 INFO Received data: ["3", "lord", "0"]

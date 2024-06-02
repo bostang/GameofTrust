@@ -5,8 +5,8 @@ import socket
 import logging
 import ast
 import json
-import datetime
-server_ip = "10.8.103.141"
+from datetime import datetime
+server_ip = "10.8.104.239"
 
 # Define constants
 COOPERATE = 0
@@ -106,12 +106,13 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
             username = user_data_list[1]
             id = get_id(username)
             matchmaking_id = user_data_list[2]
+            print(matchmaking_id)
 
             if (matchmaking_id == 0):
                 if (matchmaking[0][0] != 0):
                     # Make room
                     # Send request for client input
-                    pass
+                    response = f'Found other player'
                     
 
                 else:
@@ -124,11 +125,12 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
 
                     if (not match_found):
                         # Return timeout to client
-                        pass
+                        response = f'Timeout, other player not found'
+
                     else:
                         # Return found client
                         # Send request for client input
-                        pass
+                        response = f'Found other player'
 
                     matchmaking[0] = [0, 0]
 
@@ -144,7 +146,7 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                 if (match_found):
                     # Make room
                     # Send request for client input
-                    pass
+                    response = f'Found other player'
 
                 else:
                     matchmaking.append([id, 0])
@@ -160,11 +162,11 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
 
                     if (not match_found):
                         # Return timeout to client
-                        pass
+                        response = f'Timeout, other player not found'
                     else:
                         # Return found client
                         # Send request for client input
-                        pass
+                        response = f'Found other player'
                     
                     current_index = next((index for (index, d) in enumerate(matchmaking) if d[0] == id))
                     del matchmaking[current_index]
