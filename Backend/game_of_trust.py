@@ -44,21 +44,27 @@ def get_outcome(player1_decision, player2_decision):
 
 # Log outcomes of the game
 def log_outcome(player1, player2, decision1, decision2, outcome):
-    log_entry = {
-        'timestamp': datetime.now().isoformat(),
-        'player1_id': str(player1.id),
-        'player1_name': player1.name,
-        'player1_decision': decision_to_string(decision1),
-        'player1_points': outcome[0],
-        'player2_id': str(player2.id),
-        'player2_name': player2.name,
-        'player2_decision': decision_to_string(decision2),
-        'player2_points': outcome[1]
+    matchtime = datetime.now().isoformat()
+    log_entry1 = {
+        'timestamp': matchtime,
+        'player_id': str(player1.id),
+        'player_name': player1.name,
+        'player_decision': decision_to_string(decision1),
+        'player_points': outcome[0],
     }
-    print(f"Log entry: {log_entry}")
+    log_entry2 = {
+        'timestamp': matchtime,
+        'player_id': str(player2.id),
+        'player_name': player2.name,
+        'player_decision': decision_to_string(decision2),
+        'player_points': outcome[1]
+    }
+    print(f"Log entry 1: {log_entry1}")
+    print(f"Log entry 2: {log_entry2}")
     # Append the log entry to a file
     with open('game_log.txt', 'a') as f:
-        f.write(str(log_entry) + '\n')
+        f.write(str(log_entry1) + '\n')
+        f.write(str(log_entry2) + '\n')
 
 # Temporary function to get decision of players
 def get_decision():
