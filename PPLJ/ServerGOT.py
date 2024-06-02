@@ -40,17 +40,20 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
             raise ValueError
         print(int(user_data_list[0]))
         msg_id = int(user_data_list[0])
-        
+        # user_id = validation(username, password)
+        username = user_data_list[1]
+        password = user_data_list[2]
         is_valid, user_id = validation(username, password)
+        print(is_valid)
         if msg_id == 1: #login request
-            username = user_data_list[1]
-            password = user_data_list[2]
+            # username = user_data_list[1]
+            # password = user_data_list[2]
             if is_valid:
                 print("Authentication successful")
                 response = f'hello user {user_id}: {username}'
                 
             else:
-                response = f'hello, username: {username} and password: {password} already been used'
+                # response = f'hello, username: {username} and password: {password} already been used'
                 print("Authentication failed")
             # while (validation(user_data_list[1],user_data_list[2])):
             #     print("error")
@@ -58,15 +61,13 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
             # print('username:',username)
             # password = user_data_list[2]
             # print('password:',password)
-            self.send_response(200)
-            self.send_header('Content-type', 'text/html')
-            self.end_headers()
-            self.wfile.write(response.encode())
+            
         elif msg_id == 12: #sign in request
-            username = user_data_list[1]
-            password = user_data_list[2]
+            # username = user_data_list[1]
+            # password = user_data_list[2]
             if is_valid:
                 print("Username-password sudah digunakan")
+                response = f'hello, username: {username} and password: {password} already been used'
             else:
                 data = read_from_json_file('database.json')
                 for user in data:
@@ -77,6 +78,7 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                 data.append(append_data)
                 write_to_json_file('database.json', data) 
                 print("Username-password berhasil ditambahkan")
+                response = f'hello, username: {username} and password: {password} already been added'
         elif msg_id == 2: #leaderboard request
             username = user_data_list[1]
             data = read_from_json_file('database.json')
@@ -95,7 +97,10 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         # print('Received GET request')
         # print('Path:', self.path)
         # print('Headers:\n', self.headers)
-        
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        self.wfile.write(response.encode())
 
 def validation(username, password):
     data = read_from_json_file('database.json')
