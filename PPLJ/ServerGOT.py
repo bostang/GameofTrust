@@ -5,8 +5,16 @@ import socket
 import logging
 import ast
 import json
+import datetime
 server_ip = "10.8.103.141"
 
+# Define constants
+COOPERATE = 0
+CHEAT = 1
+
+matchmaking = [[0, 0]]
+
+timeout = 60
 
 logging.basicConfig(
     filename='server.log',        # Log file name
@@ -93,6 +101,73 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                     ranking = i
             player_leaderboard = [username,username_coin,ranking]
             response = f'21,{leaderboard},{player_leaderboard}'
+        
+        elif msg_id == 3: # room join
+            username = user_data_list[1]
+            id = get_id(username)
+            matchmaking_id = user_data_list[2]
+
+            if (matchmaking_id == 0):
+                if (matchmaking[0][0] != 0):
+                    # Make room
+                    # Send request for client input
+                    pass
+                    
+
+                else:
+                    match_found = False
+                    start_time = datetime.now()
+                    while (((datetime.now()-start_time).seconds <= timeout) or (match_found)):
+                        if matchmaking[0][1] != 0:
+                            match_found = True
+                            break
+
+                    if (not match_found):
+                        # Return timeout to client
+                        pass
+                    else:
+                        # Return found client
+                        # Send request for client input
+                        pass
+
+                    matchmaking[0] = [0, 0]
+
+
+            else:
+                match_found = False
+
+                for matchmaking_room in matchmaking:
+                    if (matchmaking_room[0] == id):
+                        match_found = True
+                        break
+
+                if (match_found):
+                    # Make room
+                    # Send request for client input
+                    pass
+
+                else:
+                    matchmaking.append([id, 0])
+                    
+                    match_found = False
+                    start_time = datetime.now()
+                    while (((datetime.now()-start_time).seconds <= timeout) or (match_found)):
+                        for matchmaking_room in matchmaking:
+                            if (matchmaking_room[0] == id):
+                                if matchmaking_room[1] != 0:
+                                    match_found = True
+                                break
+
+                    if (not match_found):
+                        # Return timeout to client
+                        pass
+                    else:
+                        # Return found client
+                        # Send request for client input
+                        pass
+                    
+                    current_index = next((index for (index, d) in enumerate(matchmaking) if d[0] == id))
+                    del matchmaking[current_index]
                 
             # leaderboard
         logging.info(f'Received data: {user_data}')
@@ -103,6 +178,14 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
         self.wfile.write(response.encode())
+
+def get_id(username):
+    data = read_from_json_file('database.json')
+    # print("Data from JSON file:", data)  # Debugging statement
+    for user in data:
+        if user['username'] == username:
+            return user['id']   # Return id if found
+    return 0    # Return 0 if not found
 
 def validation(username, password,id):
     data = read_from_json_file('database.json')
