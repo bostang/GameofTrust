@@ -2,10 +2,10 @@ import requests
 import json
 
 def http_client():
-    # target_ip = "10.8.102.108"
-    target_ip = "10.6.103.222"
+    target_ip = "10.8.102.247"
     user_input = input("Enter data to send to the HTTP server: ")
     data_list =user_input.split(',')
+    print(data_list)
     json_data = json.dumps(data_list)
     url = f'http://{target_ip}:8080?data={json_data}'
     response = requests.get(url)
