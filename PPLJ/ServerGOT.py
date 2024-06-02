@@ -71,12 +71,12 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
             else:
                 data = read_from_json_file('database.json')
                 for user in data:
-                    biggest = 0 
+                    biggest = 0
                     if user['id'] > biggest:
                         biggest = user['id']
                 append_data = {'id':biggest+1,'username':username,'password':password,'coin':0}
                 data.append(append_data)
-                write_to_json_file('database.json', data) 
+                write_to_json_file('database.json', data)
                 print("Username-password berhasil ditambahkan")
                 response = f'hello, username: {username} and password: {password} already been added'
         elif msg_id == 2: #leaderboard request
@@ -106,7 +106,7 @@ def validation(username, password):
     data = read_from_json_file('database.json')
     print("Data from JSON file:", data)  # Debugging statement
     for user in data:
-        if user['username'] == username and user['password'] == password:
+        if user['username'] == username or user['password'] == password:
             return True, user['id']
     return False, user['id']
 
