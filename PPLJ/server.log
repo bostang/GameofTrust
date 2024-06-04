@@ -158,3 +158,31 @@
 2024-06-04 19:29:42,260 INFO Received GET request
 2024-06-04 19:29:42,306 INFO Received data: ["3", "2", "0"]
 2024-06-04 19:29:42,306 INFO Received data: ["3", "1", "0"]
+2024-06-04 20:34:19,821 INFO Received GET request
+2024-06-04 20:34:19,822 INFO Received data: ["1", "001000", "1"]
+2024-06-04 20:34:57,057 INFO Received GET request
+2024-06-04 20:36:29,227 INFO Received GET request
+2024-06-04 20:40:15,785 INFO Received GET request
+2024-06-04 20:40:29,613 INFO Received GET request
+2024-06-04 20:41:30,613 INFO Received data: ["3", "1", "0"]
+2024-06-04 20:48:57,742 INFO Received GET request
+2024-06-04 20:51:18,529 INFO Received GET request
+2024-06-04 21:01:00,769 INFO Received GET request
+2024-06-04 21:01:00,770 INFO Received data: ["4", "1", "001000", "1"]
+2024-06-04 21:01:25,934 INFO Received GET request
+2024-06-04 21:01:25,934 INFO Received data: ["4", "0", "001002", "1"]
+2024-06-04 21:04:32,216 INFO Received GET request
+2024-06-04 21:04:44,727 INFO Received GET request
+2024-06-04 21:04:44,758 INFO Received data: ["4", "2", "001002", "1"]
+2024-06-04 21:09:48,420 INFO Received GET request
+2024-06-04 21:09:57,057 INFO Received GET request
+2024-06-04 21:13:01,756 INFO Received GET request
+2024-06-04 21:13:17,440 INFO Received GET request
+2024-06-04 21:27:26,709 INFO Received GET request
+2024-06-04 21:27:35,294 INFO Received GET request
+2024-06-04 21:28:27,710 INFO Received data: ["3", "yansen", ""]
+2024-06-04 21:28:36,447 INFO Received data: ["3", "lord", ""]
+2024-06-04 21:29:19,298 INFO Received GET request
+2024-06-04 21:29:21,489 INFO Received GET request
+2024-06-04 21:29:21,629 INFO Received data: ["3", "lord", ""]
+2024-06-04 21:29:21,629 INFO Received data: ["3", "yansen", ""]
