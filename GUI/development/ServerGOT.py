@@ -5,8 +5,8 @@ import socket
 import logging
 import ast
 import json
-# server_ip = "10.8.104.205"
-server_ip = "192.168.116.240"
+server_ip = "10.8.105.197"
+# server_ip = "192.168.116.240"
 
 
 logging.basicConfig(
@@ -21,9 +21,8 @@ data = [
     {'id': 3, 'username': 'kunga','password':'tes' , 'coin': 10},
     {'id': 4, 'username': 'lord','password':'tes' , 'coin': 9999},
     {'id': 5, 'username': 'newbie','password':'tes' , 'coin': 0},
-    {'id': 6, 'username': 'bostang','password':'tes' , 'coin': 5},
-    {'id': 7, 'username': 'bostang','password':'tes' , 'coin': 9},
-    
+    # {'id': 6, 'username': 'bostang','password':'tes' , 'coin': 5},
+    # {'id': 7, 'username': 'bostang','password':'tes' , 'coin': 9},
 ]
 def write_to_json_file(filename, data):
     with open(filename, 'w') as file:

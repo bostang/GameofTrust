@@ -7,8 +7,8 @@ import json
 
 def http_client(data_list):
     # format pemanggilan : http_client([msgId,Username])
-    # target_ip = "10.8.104.205"
-    target_ip = "192.168.116.240"
+    target_ip = "10.8.105.197"
+    # target_ip = "192.168.116.240"
     # user_input = input("Enter data to send to the HTTP server: ")
     # data_list =user_input.split(',')
     print("data list:",data_list,sep=' ')
