@@ -11,7 +11,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo, showerror
 from MainPage import show_main_page  # Import fungsi untuk menampilkan halaman utama
-from client1 import http_client
+from client1 import *
 
 def create_login_page(root):
     """Create the login page."""
@@ -42,7 +42,9 @@ def create_login_page(root):
         """
         user = username.get()
         pwd = password.get()
-        if user in user_data and user_data[user] == pwd:
+        login_valid = http_client([id_login,user,pwd]);
+        # if user in user_data and user_data[user] == pwd:
+        if (login_valid):
             showinfo(
                 title='Information',
                 message=f'Welcome {user}!'
@@ -63,8 +65,13 @@ def create_login_page(root):
 
         # Re-load user data from users.txt to check for existing user
         user_data = load_user_data('users.txt')
-        
-        if user in user_data:
+        # print(id_register)
+        # print(user)
+        # print(pwd)
+        user_exist = http_client([id_register,user,pwd]);
+        # if user in user_data:
+        print(f"user exist:{user_exist}") # DEBUG
+        if (user_exist):
             showerror(
                 title='Error',
                 message='Username already exists'
