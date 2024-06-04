@@ -24,8 +24,9 @@ data = [
     {'id': 3, 'username': 'kunga','password':'tes' , 'coin': 10},
     {'id': 4, 'username': 'lord','password':'tes' , 'coin': 9999},
     {'id': 5, 'username': 'newbie','password':'tes' , 'coin': 0},
-    {'id': 6, 'username': 'bostang','password':'tes' , 'coin': 5},
-    {'id': 7, 'username': 'bostang','password':'tes' , 'coin': 9},
+    {'id': 6, 'username': 'amy','password':'tes' , 'coin': 5},
+    {'id': 7, 'username': 'elmo','password':'tes' , 'coin': 9},
+    {'id': 7, 'username': 'cheleng','password':'tes' , 'coin': 9}
     
 ]
 def write_to_json_file(filename, data):
