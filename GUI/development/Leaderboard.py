@@ -7,6 +7,7 @@ from tkinter import ttk
 import display_leaderboard as dl
 # import ServerGOT as sg
 import client1 as c
+from constant import *
 
 def show_leaderboard_page(root, show_main_page_func, show_login_page_func,user):
     for widget in root.winfo_children():
@@ -16,7 +17,7 @@ def show_leaderboard_page(root, show_main_page_func, show_login_page_func,user):
     title_label = ttk.Label(root, text="Leaderboard Page", font=("Helvetica", 18))
     title_label.pack(pady=20)
 
-    data = eval(c.http_client([2,user])) # dari string diubah ke array
+    data = eval(c.http_client([id_leaderboard_request,user])) # dari string diubah ke array
     print(data)
     dl.show_leaderboard(root,data)
 

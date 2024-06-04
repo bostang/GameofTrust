@@ -15,4 +15,7 @@ WIN_POINT = 3
 LOSE_POINT = 0
 DRAW_POINT = 2
 
+# keberhasilan/kegagalan
+
+
 timeout = 60

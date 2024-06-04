@@ -217,3 +217,31 @@
 2024-06-04 21:30:23,968 INFO Received data: [2, "bostang"]
 2024-06-04 22:27:57,990 INFO Received GET request
 2024-06-04 22:27:57,991 INFO Received data: [1, "bostang", "tes"]
+2024-06-04 22:55:12,184 INFO Received GET request
+2024-06-04 22:55:12,185 INFO Received data: [1, "bostang", "tes"]
+2024-06-04 22:57:13,674 INFO Received GET request
+2024-06-04 22:57:13,674 INFO Received data: [1, "bostang", "test"]
+2024-06-04 22:57:17,794 INFO Received GET request
+2024-06-04 22:57:17,794 INFO Received data: [1, "bostang", "tes"]
+2024-06-04 22:57:20,809 INFO Received GET request
+2024-06-04 23:01:14,429 INFO Received GET request
+2024-06-04 23:03:48,166 INFO Received GET request
+2024-06-04 23:04:06,158 INFO Received GET request
+2024-06-04 23:04:06,159 INFO Received data: [1, "bostang", "tes"]
+2024-06-04 23:04:10,156 INFO Received GET request
+2024-06-04 23:05:41,479 INFO Received GET request
+2024-06-04 23:05:41,480 INFO Received data: [1, "bostang", "tes"]
+2024-06-04 23:05:44,295 INFO Received GET request
+2024-06-04 23:06:45,296 INFO Received data: [3, "bostang", ""]
+2024-06-04 23:07:10,738 INFO Received GET request
+2024-06-04 23:07:10,738 INFO Received data: [1, "yansen", "phoenix"]
+2024-06-04 23:07:14,262 INFO Received GET request
+2024-06-04 23:07:15,427 INFO Received GET request
+2024-06-04 23:07:15,566 INFO Received data: [3, "bostang", ""]
+2024-06-04 23:11:57,113 INFO Received GET request
+2024-06-04 23:11:57,114 INFO Received data: [1, "bostang", "tes"]
+2024-06-04 23:12:04,763 INFO Received GET request
+2024-06-04 23:12:04,763 INFO Received data: [1, "yansen", "phoenix"]
+2024-06-04 23:12:11,600 INFO Received GET request
+2024-06-04 23:12:12,606 INFO Received GET request
+2024-06-04 23:12:12,746 INFO Received data: [3, "yansen", ""]
