@@ -215,3 +215,5 @@
 2024-06-04 21:30:20,492 INFO Received data: [1, "bostang", "tes"]
 2024-06-04 21:30:23,967 INFO Received GET request
 2024-06-04 21:30:23,968 INFO Received data: [2, "bostang"]
+2024-06-04 22:27:57,990 INFO Received GET request
+2024-06-04 22:27:57,991 INFO Received data: [1, "bostang", "tes"]
