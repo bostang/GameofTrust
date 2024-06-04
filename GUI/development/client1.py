@@ -1,25 +1,37 @@
-# Konstanta
-id_login = 1
-id_register = 12
+# Nama File : client1.py
+# Programmer : 
+    #   Yansen Dwi Putra (13220056)
+    #   Bostang Palaguna (13220055)
+# Tanggal : 
+    # Minggu, 2 Juni 2024
+    # Selasa, 4 Juni 2024
 
+# Import Library
 import requests
 import json
+from constant import *
 
 def http_client(data_list):
-    # format pemanggilan : http_client([msgId,Username])
-    target_ip = "10.8.105.197"
-    # target_ip = "192.168.116.240"
-    # user_input = input("Enter data to send to the HTTP server: ")
-    # data_list =user_input.split(',')
+    # Fungsi ini mengirimkan data_list ke server HTTP dan mengembalikan respons dari server.
+    # Format pemanggilan: http_client([msgId,Username])
+    
+    # IP target server
+    target_ip = "10.8.102.118"
+    
+    # Cetak data_list untuk debugging
     print("data list:",data_list,sep=' ')
     
+    # Mengonversi data_list menjadi JSON
     json_data = json.dumps(data_list)
-    url = f'http://{target_ip}:8080?data={json_data}'
-    response = requests.get(url)
-    print('HTTP Server Response:', response.text)
-    return response.text
     
-
-# if __name__ == '__main__':
-#     while(1):
-#         tes = http_client()
+    # Membentuk URL dengan data JSON
+    url = f'http://{target_ip}:8080?data={json_data}'
+    
+    # Mengirimkan permintaan GET ke server
+    response = requests.get(url)
+    
+    # Cetak respons dari server untuk debugging
+    print('HTTP Server Response:', response.text)
+    
+    # Mengembalikan respons dari server dalam bentuk teks
+    return response.text
