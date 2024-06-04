@@ -26,13 +26,13 @@ logging.basicConfig(
 )
 
 # Data pengguna
-data = [
-    {'id': 1, 'username': 'yansen','password':'phoenix' , 'coin': 30},
-    {'id': 2, 'username': 'bostang','password':'tes' , 'coin': 20},
-    {'id': 3, 'username': 'kunga','password':'tes' , 'coin': 10},
-    {'id': 4, 'username': 'lord','password':'tes' , 'coin': 9999},
-    {'id': 5, 'username': 'newbie','password':'tes' , 'coin': 0},
-]
+# data = [
+#     {'id': 1, 'username': 'yansen','password':'phoenix' , 'coin': 30},
+#     {'id': 2, 'username': 'bostang','password':'tes' , 'coin': 20},
+#     {'id': 3, 'username': 'kunga','password':'tes' , 'coin': 10},
+#     {'id': 4, 'username': 'lord','password':'tes' , 'coin': 9999},
+#     {'id': 5, 'username': 'newbie','password':'tes' , 'coin': 0},
+# ]
 
 def write_to_json_file(filename, data):
     # Menulis data ke file JSON
@@ -166,7 +166,7 @@ def run_socket_server():
 http_thread = threading.Thread(target=run_http_server)
 socket_thread = threading.Thread(target=run_socket_server)
 
-write_to_json_file('database.json', data)
+# write_to_json_file('database.json', data)
 
 # print(data)
 http_thread.start()
