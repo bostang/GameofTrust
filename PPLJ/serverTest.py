@@ -10,8 +10,7 @@ from constant import *
 
 server_ip = "10.8.105.201"
 matchmaking = [[0, 0]]
-
-room = [["001002", 1, 2, 0, 0]]   # [room_id, player1_id, player2_id, action1, action2]
+rooms = [["001002", 1, 2, 0, 0]]   # [room_id, player1_id, player2_id, action1, action2]
 
 logging.basicConfig(
     filename='server.log',        
@@ -40,6 +39,8 @@ def read_from_json_file(filename):
 
 class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
+        global rooms  # Declare rooms as global to modify it
+
         logging.info('Received GET request')
         parsed_path = urllib.parse.urlparse(self.path)
         query = urllib.parse.parse_qs(parsed_path.query)
@@ -106,12 +107,13 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         # format resquest :[id,matchmaking_id]
 
         elif msg_id == id_room_join:   # room join
-            id = int(user_data_list[1])
-            matchmaking_id = int(user_data_list[2])
-            print("msg_id = ", msg_id, ", id = ", id, ", matchmaking_id = ", matchmaking_id) # Debugging untuk melihat input 
+            username = user_data_list[1]
+            id = get_id(username)
+            opponent = user_data_list[2]
+            print("msg_id = ", msg_id, ", id = ", id, ", opponent = ", opponent) # Debugging untuk melihat input 
             print(matchmaking)  # Debugging untuk melihat array matchmaking
 
-            if matchmaking_id == 0: # Random Matchmaking
+            if opponent == "": # Random Matchmaking
                 
                 if matchmaking[0][0] != 0: # Jika ada pemain lain yang masuk random matchmaking
                     matchmaking[0][1] = id  # Tambahkan id supaya diketahui check pemain satu lagi
@@ -129,12 +131,14 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                     if not match_found:
                         response = f'Timeout, other player not found'    # Memberitahukan pemain bahwa request timeout
                     else:
-                        response, room = create_room(matchmaking[0][0], matchmaking[0][1], room) # Memberikan room_id dan room
+                        response, rooms = create_room(matchmaking[0][0], matchmaking[0][1], rooms) # Memberikan room_id dan room
 
                     matchmaking[0] = [0, 0] # Reset random matchmaking
             
             else:   # Targeted matchmaking
                 # Melihat jika pemain lain telah membuat request matchmaking
+                matchmaking_id = get_id(username)
+
                 match_found1 = False
                 for matchmaking_room in matchmaking:
                     if (matchmaking_room[0] == matchmaking_id):
@@ -162,7 +166,7 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                     if not match_found2:
                         response = f'Timeout, other player not found'    # Memberitahukan pemain bahwa request timeout
                     else:
-                        response, room = create_room(id, matchmaking_id, room)    # Memberikan room_id dan room
+                        response, rooms = create_room(id, matchmaking_id, rooms)    # Memberikan room_id dan room
 
                     matchmaking[:] = [matchmaking_room for matchmaking_room in matchmaking if matchmaking_room[0] != id]    # Menghapus request matchmaking karena timeout
         
@@ -170,57 +174,81 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         ###### request untuk MATCH START ######
         #######################################
         elif msg_id == id_match_start:   # match start
-            print(room)
-            player_id = int(user_data_list[1])
+            
+            player_username = user_data_list[1]
+            player_id = get_id(player_username)
             room_id = user_data_list[2]
             action = int(user_data_list[3])
 
-            room_index = find_room(room_id, room)   # Mendapatkan index room dengan room_id
+            room_index = find_room(room_id, rooms)   # Mendapatkan index room dengan room_id
 
             error_check = False # Variabel untuk menyimpan jika terjadi error
 
-            if (room_index):
+            if (room_index == -1):
                 response = f"Room dengan room_id:{room_id} tidak ditemukan!"
 
             else:
-                if (room[room_index][1] == player_id):  # Jika id yang diberikan player 1
-                    if (room[room_index][3] == 0):
+                if (rooms[room_index][1] == player_id):  # Jika id yang diberikan player 1
+                    if (rooms[room_index][3] != 0):
                         response = f"Sudah memberikan input!"
                         error_check = True
                     else:
                         player_no = 1   # Variabel untuk melihat player ke berapa
-                        room[room_index][3] = action
+                        rooms[room_index][3] = action
+                        # print(f"Player input {rooms[room_index][3]}")   # Debugging input player 1
                     
-                elif (room[room_index][2] == player_id):  # Jika id yang diberikan player 2
-                    if (room[room_index][4] == 0):
+                elif (rooms[room_index][2] == player_id):  # Jika id yang diberikan player 2
+                    if (rooms[room_index][4] != 0):
                         response = f"Sudah memberikan input!"
                         error_check = True
                     else:
                         player_no = 2   # Variabel untuk melihat player ke berapa
-                        room[room_index][4] = action
+                        rooms[room_index][4] = action
+                        # print(f"Player input {rooms[room_index][4]}")   # Debugging input player 2
                     
                 else:
                     response = f"Id yang diberikan tidak valid"
                     error_check = True
 
-                if (error_check == True):   # Jika tidak terjadi error pada tahap sebelumnya
-                    while (1):
-                        if ((room[room_index][3] != 0) and (room[room_index][4] != 0)): # Jika semua pemain sudah memberikan aksi
-                            result1, result2 = get_outcome(room[room_index][3], room[room_index][4])    # Kalkulasi hasil
-                            
-                            # Mengumumkan hasil dengan memeriksa pemain ke berapa
-                            if (player_no == 1):
-                                response = f"Kamu mendapatkan {result1} poin, pemain lain mendapatkan {result2}"
-                                break
+                if (error_check == False):   # Jika tidak terjadi error pada tahap sebelumnya
+                    
+                    # print(rooms)    # Debugging rooms
+                    
+                    if ((rooms[room_index][3] != 0) and (rooms[room_index][4] != 0)): # Pemain satu lagi sudah memberikan aksi
+                        result1, result2 = get_outcome(rooms[room_index][3], rooms[room_index][4])    # Kalkulasi hasil
 
-                            elif (player_no == 2):
-                                response = f"Kamu mendapatkan {result2} poin, pemain lain mendapatkan {result1}"
-                                break
+                        # Mengumumkan hasil dengan memeriksa pemain ke berapa
+                        if (player_no == 1):
+                            response = f"Kamu mendapatkan {result1} poin, pemain lain mendapatkan {result2}"
 
-                            else:
-                                response = f"Terdapat error di server"
-                                print("Error!! player_no tidak valid")
-                                break
+                        elif (player_no == 2):
+                            response = f"Kamu mendapatkan {result2} poin, pemain lain mendapatkan {result1}"
+
+                        else:
+                            response = f"Terdapat error di server"
+                            print("Error!! player_no tidak valid")
+
+                    else:
+                        while (1):  # Menunggu pemain satu lagi
+                            room_index = find_room(room_id, rooms)   # Mendapatkan index room dengan room_id
+                            if ((rooms[room_index][3] != 0) and (rooms[room_index][4] != 0)): # Jika semua pemain sudah memberikan aksi
+                                result1, result2 = get_outcome(rooms[room_index][3], rooms[room_index][4])    # Kalkulasi hasil
+                                
+                                remove_room(room_id,rooms)  # Menghilangkan room
+
+                                # Mengumumkan hasil dengan memeriksa pemain ke berapa
+                                if (player_no == 1):
+                                    response = f"Kamu mendapatkan {result1} poin, pemain lain mendapatkan {result2}"
+                                    break
+
+                                elif (player_no == 2):
+                                    response = f"Kamu mendapatkan {result2} poin, pemain lain mendapatkan {result1}"
+                                    break
+
+                                else:
+                                    response = f"Terdapat error di server"
+                                    print("Error!! player_no tidak valid")
+                                    break
 
         logging.info(f'Received data: {user_data}')
         self.send_response(200)
@@ -245,20 +273,20 @@ def get_id(username):
             return user['id']
     return 0
 
-def create_room(player1_id, player2_id, room):  # Membuat room. Return room_id dan array room yang ditambahkan
+def create_room(player1_id, player2_id, rooms):  # Membuat room. Return room_id dan array room yang ditambahkan
     room_id = f"{player1_id:0>3}{player2_id:0>3}"
-    room.append([room_id, player1_id, player2_id, 0, 0])
+    rooms.append([room_id, player1_id, player2_id, 0, 0])
 
-    return room_id, room
+    return room_id, rooms
 
-def remove_room(room_id, room): # Menghapus room dengan room_id. Return array room yang sudah diubah
-    updated_array = [item for item in room if item[0] != room_id]
+def remove_room(room_id, rooms): # Menghapus room dengan room_id. Return array room yang sudah diubah
+    updated_array = [item for item in rooms if item[0] != room_id]
     return updated_array
 
-def find_room(room_id, room):   # Mencari index dari room dengan room_id. Return -1 jika tidak ditemukan
-    for r in range(len(room)):
-        if (r[0] == room_id):
-            return r
+def find_room(room_id, rooms):   # Mencari index dari room dengan room_id. Return -1 jika tidak ditemukan
+    for i, room in enumerate(rooms):
+        if room[0] == room_id:
+            return i
     return -1
 
 def validation(username, password, id):

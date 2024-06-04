@@ -7,16 +7,20 @@
     # Selasa, 4 Juni 2024
 
 # Import Library
-from http.server import SimpleHTTPRequestHandler, HTTPServer
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import urllib.parse
 import threading
 import socket
 import logging
 import ast
 import json
+from datetime import datetime
 from constant import *
 
-server_ip = "10.8.102.118"
+server_ip = "10.8.105.201"
+matchmaking = [[0, 0]]
+rooms = [["001002", 1, 2, 0, 0]]   # [room_id, player1_id, player2_id, action1, action2]
+
 
 
 logging.basicConfig(
@@ -49,6 +53,8 @@ def read_from_json_file(filename):
 # Setup Server HTTP
 class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
+        global rooms  # Declare rooms as global to modify it
+
         logging.info('Received GET request')
         # Parsing path dan query
         parsed_path = urllib.parse.urlparse(self.path)
@@ -120,8 +126,189 @@ def logic(user_data_list):
                 ranking = i
         player_leaderboard = [username,ranking,username_coin]
         response = f'{id_register},{leaderboard},{player_leaderboard}'
-    return response
+    #######################################
+    ###### request untuk JOIN ROOM   ######
+    #######################################
+    # format resquest :[id,matchmaking_id]
+
+    elif msg_id == id_room_join:   # room join
+        username = user_data_list[1]
+        id = get_id(username)
+        opponent = user_data_list[2]
+        print("msg_id = ", msg_id, ", id = ", id, ", opponent = ", opponent) # Debugging untuk melihat input 
+        print(matchmaking)  # Debugging untuk melihat array matchmaking
+
+        if opponent == "": # Random Matchmaking
             
+            if matchmaking[0][0] != 0: # Jika ada pemain lain yang masuk random matchmaking
+                matchmaking[0][1] = id  # Tambahkan id supaya diketahui check pemain satu lagi
+                response = f"{matchmaking[0][0]:0>3}{matchmaking[0][1]:0>3}"    # Memberikan room_id
+            else:
+                matchmaking[0][0] = id  # Tambah request
+
+                # Menunggu request pemain lain sampai timeout/ditemukan
+                match_found = False
+                start_time = datetime.now()
+                while (datetime.now() - start_time).seconds <= timeout and not match_found:
+                    if matchmaking[0][1] != 0:
+                        match_found = True
+
+                if not match_found:
+                    response = f'Timeout, other player not found'    # Memberitahukan pemain bahwa request timeout
+                else:
+                    response, rooms = create_room(matchmaking[0][0], matchmaking[0][1], rooms) # Memberikan room_id dan room
+
+                matchmaking[0] = [0, 0] # Reset random matchmaking
+        
+        else:   # Targeted matchmaking
+            # Melihat jika pemain lain telah membuat request matchmaking
+            matchmaking_id = get_id(username)
+
+            match_found1 = False
+            for matchmaking_room in matchmaking:
+                if (matchmaking_room[0] == matchmaking_id):
+                    matchmaking_room[1] = id    # Tambahkan id supaya diketahui check pemain satu lagi
+                    match_found1 = True
+                    break
+
+            print("match found1 = ", match_found1)# Debugging untuk melihat jika pemain lain telah membuat request matchmaking
+
+            if match_found1:    # Sudah ada
+                response = f"{matchmaking_id:0>3}{id:0>3}"  # Memberikan room_id
+
+            else:   # Belum ada
+                matchmaking.append([id, 0]) # Tambah request
+                
+                # Menunggu request pemain lain sampai timeout/ditemukan
+                match_found2 = False
+                start_time = datetime.now() 
+                while (datetime.now() - start_time).seconds <= timeout and not match_found2:
+                    for matchmaking_room in matchmaking:
+                        if matchmaking_room[0] == id and matchmaking_room[1] != 0:
+                            matchmaking_room[1] = matchmaking_id    
+                            match_found2 = True
+
+                if not match_found2:
+                    response = f'Timeout, other player not found'    # Memberitahukan pemain bahwa request timeout
+                else:
+                    response, rooms = create_room(id, matchmaking_id, rooms)    # Memberikan room_id dan room
+
+                matchmaking[:] = [matchmaking_room for matchmaking_room in matchmaking if matchmaking_room[0] != id]    # Menghapus request matchmaking karena timeout
+
+    #######################################
+    ###### request untuk MATCH START ######
+    #######################################
+    elif msg_id == id_match_start:   # match start
+        
+        player_username = user_data_list[1]
+        player_id = get_id(player_username)
+        room_id = user_data_list[2]
+        action = int(user_data_list[3])
+
+        room_index = find_room(room_id, rooms)   # Mendapatkan index room dengan room_id
+
+        error_check = False # Variabel untuk menyimpan jika terjadi error
+
+        if (room_index == -1):
+            response = f"Room dengan room_id:{room_id} tidak ditemukan!"
+
+        else:
+            if (rooms[room_index][1] == player_id):  # Jika id yang diberikan player 1
+                if (rooms[room_index][3] != 0):
+                    response = f"Sudah memberikan input!"
+                    error_check = True
+                else:
+                    player_no = 1   # Variabel untuk melihat player ke berapa
+                    rooms[room_index][3] = action
+                    # print(f"Player input {rooms[room_index][3]}")   # Debugging input player 1
+                
+            elif (rooms[room_index][2] == player_id):  # Jika id yang diberikan player 2
+                if (rooms[room_index][4] != 0):
+                    response = f"Sudah memberikan input!"
+                    error_check = True
+                else:
+                    player_no = 2   # Variabel untuk melihat player ke berapa
+                    rooms[room_index][4] = action
+                    # print(f"Player input {rooms[room_index][4]}")   # Debugging input player 2
+                
+            else:
+                response = f"Id yang diberikan tidak valid"
+                error_check = True
+
+            if (error_check == False):   # Jika tidak terjadi error pada tahap sebelumnya
+                
+                # print(rooms)    # Debugging rooms
+                
+                if ((rooms[room_index][3] != 0) and (rooms[room_index][4] != 0)): # Pemain satu lagi sudah memberikan aksi
+                    result1, result2 = get_outcome(rooms[room_index][3], rooms[room_index][4])    # Kalkulasi hasil
+
+                    # Mengumumkan hasil dengan memeriksa pemain ke berapa
+                    if (player_no == 1):
+                        response = f"Kamu mendapatkan {result1} poin, pemain lain mendapatkan {result2}"
+
+                    elif (player_no == 2):
+                        response = f"Kamu mendapatkan {result2} poin, pemain lain mendapatkan {result1}"
+
+                    else:
+                        response = f"Terdapat error di server"
+                        print("Error!! player_no tidak valid")
+
+                else:
+                    while (1):  # Menunggu pemain satu lagi
+                        room_index = find_room(room_id, rooms)   # Mendapatkan index room dengan room_id
+                        if ((rooms[room_index][3] != 0) and (rooms[room_index][4] != 0)): # Jika semua pemain sudah memberikan aksi
+                            result1, result2 = get_outcome(rooms[room_index][3], rooms[room_index][4])    # Kalkulasi hasil
+                            
+                            remove_room(room_id,rooms)  # Menghilangkan room
+
+                            # Mengumumkan hasil dengan memeriksa pemain ke berapa
+                            if (player_no == 1):
+                                response = f"Kamu mendapatkan {result1} poin, pemain lain mendapatkan {result2}"
+                                break
+
+                            elif (player_no == 2):
+                                response = f"Kamu mendapatkan {result2} poin, pemain lain mendapatkan {result1}"
+                                break
+
+                            else:
+                                response = f"Terdapat error di server"
+                                print("Error!! player_no tidak valid")
+                                break
+    return response
+
+def get_outcome(player1_decision, player2_decision):
+    if player1_decision == COOPERATE and player2_decision == COOPERATE:
+        return (DRAW_POINT, DRAW_POINT)  # Both cooperate
+    elif player1_decision == COOPERATE and player2_decision == CHEAT:
+        return (LOSE_POINT, WIN_POINT)  # Player 1 cooperates, Player 2 cheats
+    elif player1_decision == CHEAT and player2_decision == COOPERATE:
+        return (WIN_POINT, LOSE_POINT)  # Player 1 cheats, Player 2 cooperates
+    elif player1_decision == CHEAT and player2_decision == CHEAT:
+        return (LOSE_POINT, LOSE_POINT)  # Both cheat
+
+def get_id(username):
+    data = read_from_json_file('database.json')
+    for user in data:
+        if user['username'] == username:
+            return user['id']
+    return 0
+
+def create_room(player1_id, player2_id, rooms):  # Membuat room. Return room_id dan array room yang ditambahkan
+    room_id = f"{player1_id:0>3}{player2_id:0>3}"
+    rooms.append([room_id, player1_id, player2_id, 0, 0])
+
+    return room_id, rooms
+
+def remove_room(room_id, rooms): # Menghapus room dengan room_id. Return array room yang sudah diubah
+    updated_array = [item for item in rooms if item[0] != room_id]
+    return updated_array
+
+def find_room(room_id, rooms):   # Mencari index dari room dengan room_id. Return -1 jika tidak ditemukan
+    for i, room in enumerate(rooms):
+        if room[0] == room_id:
+            return i
+    return -1
+
 def validation(username, password,id):
     data = read_from_json_file('database.json')
     # print("Data from JSON file:", data)  # Debugging statement
@@ -135,7 +322,7 @@ def validation(username, password,id):
 
 def run_http_server():
     server_address = (server_ip, 8080)
-    httpd = HTTPServer(server_address, MyHTTPRequestHandler)
+    httpd = ThreadingHTTPServer(server_address, MyHTTPRequestHandler)
     print('HTTP server running on port 8080')
     httpd.serve_forever()
 
