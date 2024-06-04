@@ -23,27 +23,19 @@ def create_login_page(root):
     username = tk.StringVar()
     password = tk.StringVar()
 
-    # Load user data dari file
-    def load_user_data(file_path):
-        users = {}
-        with open(file_path, 'r') as file:
-            for line in file:
-                data = line.strip().split(',')
-                if len(data) == 2:  # memastikan hanya entri yang valid yang diambil
-                    user, pwd = data
-                    users[user] = pwd
-        return users
-
-    # Load user data
-    user_data = load_user_data('users.txt')
-
     def login_clicked():
         """ callback ketika tombol login diklik
         """
         user = username.get()
         pwd = password.get()
-        login_valid = http_client([id_login,user,pwd]);
+        login_valid = eval(http_client([id_login,user,pwd]))
         # if user in user_data and user_data[user] == pwd:
+        
+        # if (eval(login_valid)):
+        #     print("login valid")
+        # else :
+        #     print("login not valid")
+
         if (login_valid):
             showinfo(
                 title='Information',
@@ -63,13 +55,7 @@ def create_login_page(root):
         user = username.get()
         pwd = password.get()
 
-        # Re-load user data from users.txt to check for existing user
-        user_data = load_user_data('users.txt')
-        # print(id_register)
-        # print(user)
-        # print(pwd)
-        user_exist = http_client([id_register,user,pwd]);
-        # if user in user_data:
+        user_exist = eval(http_client([id_register,user,pwd]));
         print(f"user exist:{user_exist}") # DEBUG
         if (user_exist):
             showerror(
@@ -78,14 +64,7 @@ def create_login_page(root):
             )
         else:
             with open('users.txt', 'a') as file:
-
-                ### UNTUK YANSEN : data siap ke database sudah standby di new_database_data ###
-                # new_database_data = f'12,{user},{pwd}'
-                # http_client(new_database_data)
-                # print(new_database_data)
                 file.write(f'{user},{pwd}\n')
-            # Reload user data after registering new user
-            user_data = load_user_data('users.txt')
             showinfo(
                 title='Information',
                 message='Registration successful!'

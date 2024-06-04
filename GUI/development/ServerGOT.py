@@ -1,3 +1,12 @@
+# Nama File : ServerGOT.py
+# Programmer : 
+    #   Yansen Dwi Putra (13220056)
+    #   Bostang Palaguna (13220055)
+# Tanggal : 
+    # Minggu, 2 Juni 2024
+    # Selasa, 4 Juni 2024
+
+# Import Library
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 import urllib.parse
 import threading
@@ -5,39 +14,42 @@ import socket
 import logging
 import ast
 import json
-server_ip = "10.8.105.197"
-# server_ip = "192.168.116.240"
+from constant import *
 
+server_ip = "10.8.105.197"
 
 logging.basicConfig(
-    filename='server.log',        # Log file name
-    level=logging.DEBUG,          # Log level
-    format='%(asctime)s %(levelname)s %(message)s'  # Log format
+    filename='server.log',        # Nama file log
+    level=logging.DEBUG,          # Level log
+    format='%(asctime)s %(levelname)s %(message)s'  # Format log
 )
 
+# Data pengguna
 data = [
     {'id': 1, 'username': 'yansen','password':'phoenix' , 'coin': 30},
     {'id': 2, 'username': 'bostang','password':'tes' , 'coin': 20},
     {'id': 3, 'username': 'kunga','password':'tes' , 'coin': 10},
     {'id': 4, 'username': 'lord','password':'tes' , 'coin': 9999},
     {'id': 5, 'username': 'newbie','password':'tes' , 'coin': 0},
-    # {'id': 6, 'username': 'bostang','password':'tes' , 'coin': 5},
-    # {'id': 7, 'username': 'bostang','password':'tes' , 'coin': 9},
 ]
+
 def write_to_json_file(filename, data):
+    # Menulis data ke file JSON
     with open(filename, 'w') as file:
         json.dump(data, file, indent=4)
 
 
 def read_from_json_file(filename):
+    # Membaca data dari file JSON
     with open(filename, 'r') as file:
         data = json.load(file)
     return data
 
-# HTTP Server setup
+# Setup Server HTTP
 class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         logging.info('Received GET request')
+        # Parsing path dan query
         parsed_path = urllib.parse.urlparse(self.path)
         query = urllib.parse.parse_qs(parsed_path.query)
         user_data = query.get('data', [''])[0]
@@ -48,30 +60,31 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         print(int(user_data_list[0]))
         msg_id = int(user_data_list[0])
         
-        # user_id = validation(username, password
-        if msg_id == 1: #login request
+        #######################################
+        #######  request untuk LOGIN   ########
+        ####################################### 
+        if msg_id == id_login:
             username = user_data_list[1]
             password = user_data_list[2]
             print(user_data_list,msg_id,username, password, sep=' ')
             print(type(user_data_list),type(msg_id),type(username), type(password), sep=' ')
             is_valid, user_id = validation(username, password, msg_id)
-            # username = user_data_list[1]
-            # password = user_data_list[2]
             response = f'{is_valid}'
             if is_valid:
-                print("Authentication successful")
-                # response = f'hello user {user_id}: {username}'
+                print("Autentikasi berhasil")
             else:
-                # response = f'hello, username: {username} and password: {password} already been used'
-                print("Authentication failed")
-            
-        elif msg_id == 12: #sign up request
+                print("Autentikasi gagal")
+
+        #######################################
+        #######  request untuk REGISTER #######
+        ####################################### 
+        elif msg_id == id_register:
             username = user_data_list[1]
             password = user_data_list[2]
             is_valid, user_id = validation(username, password, msg_id)
             response = f"{is_valid}"
             if is_valid:
-                print("Username-password sudah digunakan")
+                print("Nama pengguna-kata sandi sudah digunakan")
                 # response = f'hello, username: {username} and password: {password} already been used'
             else:
                 data = read_from_json_file('database.json')
@@ -82,9 +95,11 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                 append_data = {'id':biggest+1,'username':username,'password':password,'coin':0}
                 data.append(append_data)
                 write_to_json_file('database.json', data)
-                print("Username-password berhasil ditambahkan")
-                # response = f'hello, username: {username} and password: {password} already been added'
-        elif msg_id == 2: #leaderboard request
+                print("Nama pengguna-kata sandi berhasil ditambahkan")
+        #######################################
+        ###### request untuk LEADERBOARD ######
+        ####################################### 
+        elif msg_id == id_leaderboard_request: 
             username = user_data_list[1]
             data = read_from_json_file('database.json')
             sorted_data = sorted(data, key=lambda x: x["coin"], reverse=True)[:10]
@@ -96,15 +111,11 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                 if user["username"] == username:
                     username_coin = user["coin"]
                     ranking = i
-            # player_leaderboard = [username,username_coin,ranking]
             player_leaderboard = [username,ranking,username_coin]
-            response = f'21,{leaderboard},{player_leaderboard}'
+            response = f'{id_register},{leaderboard},{player_leaderboard}'
                 
             # leaderboard
         logging.info(f'Received data: {user_data}')
-        # print('Received GET request')
-        # print('Path:', self.path)
-        # print('Headers:\n', self.headers)
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
@@ -114,20 +125,12 @@ def validation(username, password,id):
     data = read_from_json_file('database.json')
     print("Data from JSON file:", data)  # Debugging statement
     for user in data:
-        if user['username'] == username and user['password'] == password and id == 1:
+        if user['username'] == username and user['password'] == password and id == id_login:
             return True, user['id']
-        elif user['username'] == username and id == 12:
+        elif user['username'] == username and id == id_register:
             return True, user['id']
             
-    return False, user['id']
-
-# def validation(username,password):
-#     data = read_from_json_file('database.json')
-#     for i in data[0]:
-#         if i['username'] == username and i['password'] == password:
-#             return True
-#     return False
-    
+    return False, user['id']    
 
 def run_http_server():
     server_address = (server_ip, 8080)
@@ -135,7 +138,7 @@ def run_http_server():
     print('HTTP server running on port 8080')
     httpd.serve_forever()
 
-# Socket Server setup
+# Setup Server Socket
 def run_socket_server():
     
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -155,7 +158,7 @@ def run_socket_server():
         client_socket.sendall(b'Hello from Socket server!')
         client_socket.close()
 
-# Run both servers concurrently
+# Menjalankan kedua server secara bersamaan
 http_thread = threading.Thread(target=run_http_server)
 socket_thread = threading.Thread(target=run_socket_server)
 
