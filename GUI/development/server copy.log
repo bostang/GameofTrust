@@ -1,0 +1,21 @@
+2024-06-02 14:26:10,925 INFO Received GET request
+2024-06-02 15:00:17,253 INFO Received GET request
+2024-06-02 15:00:17,265 INFO Received data: ["1", "yansen", "phoenix"]
+2024-06-02 15:00:47,697 INFO Received GET request
+2024-06-02 15:00:47,697 INFO Received data: ["12", "bostang", "bos123"]
+2024-06-02 15:01:06,431 INFO Received GET request
+2024-06-02 15:01:06,431 INFO Received data: ["12", "bostang", "bos123"]
+2024-06-02 15:01:14,284 INFO Received GET request
+2024-06-02 15:01:14,284 INFO Received data: ["12", "bostang", "bos"]
+2024-06-02 15:08:49,233 INFO Received GET request
+2024-06-02 15:08:49,245 INFO Received data: ["1", "yansen", "phoenix"]
+2024-06-02 15:08:52,143 INFO Received GET request
+2024-06-02 15:08:52,159 INFO Received data: ["1", "yansen", "phoeni"]
+2024-06-02 15:09:22,932 INFO Received GET request
+2024-06-02 15:09:22,932 INFO Received data: ["12", "bostang", "bos123"]
+2024-06-02 15:09:38,827 INFO Received GET request
+2024-06-02 15:09:38,827 INFO Received data: ["12", "bostang", "bos13"]
+2024-06-02 15:22:22,932 INFO Received GET request
+2024-06-02 15:22:22,949 INFO Received data: ["1", "yansen", "phoenix"]
+2024-06-02 15:33:50,200 INFO Received GET request
+2024-06-02 15:33:50,211 INFO Received data: ["12", "kingkungking", "abc123"]
