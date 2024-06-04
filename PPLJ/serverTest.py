@@ -138,7 +138,7 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
             else:   # Targeted matchmaking
                 # Melihat jika pemain lain telah membuat request matchmaking
                 matchmaking_id = get_id(username)
-                
+
                 match_found1 = False
                 for matchmaking_room in matchmaking:
                     if (matchmaking_room[0] == matchmaking_id):
@@ -175,7 +175,8 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         #######################################
         elif msg_id == id_match_start:   # match start
             
-            player_id = int(user_data_list[1])
+            player_username = user_data_list[1]
+            player_id = get_id(player_username)
             room_id = user_data_list[2]
             action = int(user_data_list[3])
 
@@ -188,27 +189,31 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
 
             else:
                 if (rooms[room_index][1] == player_id):  # Jika id yang diberikan player 1
-                    if (rooms[room_index][3] == 0):
+                    if (rooms[room_index][3] != 0):
                         response = f"Sudah memberikan input!"
                         error_check = True
                     else:
                         player_no = 1   # Variabel untuk melihat player ke berapa
                         rooms[room_index][3] = action
+                        # print(f"Player input {rooms[room_index][3]}")   # Debugging input player 1
                     
                 elif (rooms[room_index][2] == player_id):  # Jika id yang diberikan player 2
-                    if (rooms[room_index][4] == 0):
+                    if (rooms[room_index][4] != 0):
                         response = f"Sudah memberikan input!"
                         error_check = True
                     else:
                         player_no = 2   # Variabel untuk melihat player ke berapa
                         rooms[room_index][4] = action
+                        # print(f"Player input {rooms[room_index][4]}")   # Debugging input player 2
                     
                 else:
                     response = f"Id yang diberikan tidak valid"
                     error_check = True
 
-                if (error_check == True):   # Jika tidak terjadi error pada tahap sebelumnya
-                    print(rooms)
+                if (error_check == False):   # Jika tidak terjadi error pada tahap sebelumnya
+                    
+                    # print(rooms)    # Debugging rooms
+                    
                     if ((rooms[room_index][3] != 0) and (rooms[room_index][4] != 0)): # Pemain satu lagi sudah memberikan aksi
                         result1, result2 = get_outcome(rooms[room_index][3], rooms[room_index][4])    # Kalkulasi hasil
 

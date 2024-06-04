@@ -186,3 +186,10 @@
 2024-06-04 21:29:21,489 INFO Received GET request
 2024-06-04 21:29:21,629 INFO Received data: ["3", "lord", ""]
 2024-06-04 21:29:21,629 INFO Received data: ["3", "yansen", ""]
+2024-06-04 21:35:08,505 INFO Received GET request
+2024-06-04 21:36:29,297 INFO Received GET request
+2024-06-04 21:36:29,298 INFO Received data: ["4", "yansen", "001002", "1"]
+2024-06-04 21:38:02,162 INFO Received GET request
+2024-06-04 21:38:14,962 INFO Received GET request
+2024-06-04 21:38:15,088 INFO Received data: ["4", "yansen", "001002", "1"]
+2024-06-04 21:38:15,088 INFO Received data: ["4", "bostang", "001002", "1"]
