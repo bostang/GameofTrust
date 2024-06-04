@@ -40,5 +40,17 @@
         "username": "bostang",
         "password": "tes",
         "coin": 9
+    },
+    {
+        "id": 8,
+        "username": "bos",
+        "password": "abc123",
+        "coin": 0
+    },
+    {
+        "id": 9,
+        "username": "bis",
+        "password": "abc",
+        "coin": 0
     }
 ]

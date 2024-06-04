@@ -5,8 +5,8 @@ import socket
 import logging
 import ast
 import json
-# server_ip = "10.8.104.205"
-server_ip = "192.168.116.240"
+server_ip = "10.8.105.197"
+# server_ip = "192.168.116.240"
 
 
 logging.basicConfig(
@@ -21,9 +21,8 @@ data = [
     {'id': 3, 'username': 'kunga','password':'tes' , 'coin': 10},
     {'id': 4, 'username': 'lord','password':'tes' , 'coin': 9999},
     {'id': 5, 'username': 'newbie','password':'tes' , 'coin': 0},
-    {'id': 6, 'username': 'bostang','password':'tes' , 'coin': 5},
-    {'id': 7, 'username': 'bostang','password':'tes' , 'coin': 9},
-    
+    # {'id': 6, 'username': 'bostang','password':'tes' , 'coin': 5},
+    # {'id': 7, 'username': 'bostang','password':'tes' , 'coin': 9},
 ]
 def write_to_json_file(filename, data):
     with open(filename, 'w') as file:
@@ -48,27 +47,32 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
             raise ValueError
         print(int(user_data_list[0]))
         msg_id = int(user_data_list[0])
+        
         # user_id = validation(username, password
         if msg_id == 1: #login request
             username = user_data_list[1]
             password = user_data_list[2]
+            print(user_data_list,msg_id,username, password, sep=' ')
+            print(type(user_data_list),type(msg_id),type(username), type(password), sep=' ')
             is_valid, user_id = validation(username, password, msg_id)
             # username = user_data_list[1]
             # password = user_data_list[2]
+            response = f'{is_valid}'
             if is_valid:
                 print("Authentication successful")
-                response = f'hello user {user_id}: {username}'
+                # response = f'hello user {user_id}: {username}'
             else:
-                response = f'hello, username: {username} and password: {password} already been used'
+                # response = f'hello, username: {username} and password: {password} already been used'
                 print("Authentication failed")
             
-        elif msg_id == 12: #sign in request
+        elif msg_id == 12: #sign up request
             username = user_data_list[1]
             password = user_data_list[2]
             is_valid, user_id = validation(username, password, msg_id)
+            response = f"{is_valid}"
             if is_valid:
                 print("Username-password sudah digunakan")
-                response = f'hello, username: {username} and password: {password} already been used'
+                # response = f'hello, username: {username} and password: {password} already been used'
             else:
                 data = read_from_json_file('database.json')
                 for user in data:
@@ -79,7 +83,7 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                 data.append(append_data)
                 write_to_json_file('database.json', data)
                 print("Username-password berhasil ditambahkan")
-                response = f'hello, username: {username} and password: {password} already been added'
+                # response = f'hello, username: {username} and password: {password} already been added'
         elif msg_id == 2: #leaderboard request
             username = user_data_list[1]
             data = read_from_json_file('database.json')
@@ -112,7 +116,7 @@ def validation(username, password,id):
     for user in data:
         if user['username'] == username and user['password'] == password and id == 1:
             return True, user['id']
-        elif user['username'] == username and id == 2:
+        elif user['username'] == username and id == 12:
             return True, user['id']
             
     return False, user['id']
