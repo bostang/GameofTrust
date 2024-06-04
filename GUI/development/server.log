@@ -107,3 +107,5 @@
 2024-06-04 17:20:35,696 INFO Received data: [1, "nosaf", "fsfsa"]
 2024-06-04 17:21:39,635 INFO Received GET request
 2024-06-04 17:21:39,640 INFO Received data: [1, "bosf", "afasfd"]
+2024-06-04 17:23:05,534 INFO Received GET request
+2024-06-04 17:23:05,538 INFO Received data: [1, "bosta", "boa"]
