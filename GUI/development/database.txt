@@ -1,4 +1,0 @@
-1,bostang,bos123,3
-2,kunga,kungkung69,2
-3,yansen,yansennn_,1
-4,a,a,1
