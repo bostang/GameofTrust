@@ -100,3 +100,12 @@
 2024-06-04 16:54:17,632 INFO Received GET request
 2024-06-04 16:54:34,073 INFO Received data: ["3", "yansen", "4"]
 2024-06-04 16:54:38,775 INFO Received data: ["3", "lord", "1"]
+2024-06-04 17:05:20,244 INFO Received GET request
+2024-06-04 17:05:23,434 INFO Received GET request
+2024-06-04 17:05:41,261 INFO Received data: ["3", "yansen", "4"]
+2024-06-04 17:05:44,592 INFO Received data: ["3", "lord", "1"]
+2024-06-04 17:10:49,067 INFO Received GET request
+2024-06-04 17:14:03,528 INFO Received GET request
+2024-06-04 17:14:09,149 INFO Received GET request
+2024-06-04 17:14:09,291 INFO Received data: ["3", "yansen", "4"]
+2024-06-04 17:14:09,291 INFO Received data: ["3", "lord", "1"]

@@ -9,7 +9,7 @@ from datetime import datetime
 
 server_ip = "192.168.24.214"
 matchmaking = [[0, 0]]
-timeout = 20
+timeout = 60
 
 logging.basicConfig(
     filename='server.log',        
@@ -102,19 +102,26 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                         response = 'Found other player'
                     matchmaking[0] = [0, 0]
             else:
-                match_found = any(room[0] == id for room in matchmaking)
-                if match_found:
+                match_found1 = False
+                for room in matchmaking:
+                    if (room[0] == matchmaking_id):
+                        room[1] = id
+                        match_found1 = True
+                        break
+                print("match found1 = ", match_found1)
+
+                if match_found1:
                     response = 'Found other player'
                 else:
                     matchmaking.append([id, 0])
-                    match_found = False
+                    match_found2 = False
                     start_time = datetime.now()
-                    while (datetime.now() - start_time).seconds <= timeout and not match_found:
+                    while (datetime.now() - start_time).seconds <= timeout and not match_found2:
                         for room in matchmaking:
                             if room[0] == id and room[1] != 0:
-                                room[1] = id
-                                match_found = True
-                    if not match_found:
+                                room[1] = matchmaking_id
+                                match_found2 = True
+                    if not match_found2:
                         response = 'Timeout, other player not found'
                     else:
                         response = 'Found other player'
