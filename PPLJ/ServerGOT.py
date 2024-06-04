@@ -6,11 +6,11 @@ import logging
 import ast
 import json
 from datetime import datetime
-server_ip = "10.8.103.141"
+server_ip = "192.168.24.214"
 
 matchmaking = [[0,0]]
 
-timeout = 60
+timeout = 20
 
 logging.basicConfig(
     filename='server.log',        # Log file name
@@ -106,6 +106,7 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
 
             if (matchmaking_id == 0):
                 if (matchmaking[0][0] != 0):
+                    matchmaking[0][1] = id
                     # Make room
                     # Send request for client input
                     response = f'Found other player'
@@ -153,6 +154,7 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                         for matchmaking_room in matchmaking:
                             if (matchmaking_room[0] == id):
                                 if matchmaking_room[1] != 0:
+                                    matchmaking_room[1] = id
                                     match_found = True
                                 break
 
@@ -179,7 +181,7 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
 
 def get_id(username):
     data = read_from_json_file('database.json')
-    print("Data from JSON file:", data)  # Debugging statement
+    # print("Data from JSON file:", data)  # Debugging statement
     for user in data:
         if user['username'] == username:
             return user['id']
