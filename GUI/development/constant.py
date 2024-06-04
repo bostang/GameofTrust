@@ -3,6 +3,7 @@
 id_login = 1
 id_register = 12
 id_leaderboard_request = 2
+id_become_active = 2
 id_room_join = 3
 id_match_start = 4
 
@@ -12,10 +13,10 @@ CHEAT = 2
 
 # Poin menang, kalah, seri
 WIN_POINT = 3
-LOSE_POINT = 0
+LOSE_POINT = -1
 DRAW_POINT = 2
 
 # keberhasilan/kegagalan
 
 
-timeout = 60
+timeout = 10

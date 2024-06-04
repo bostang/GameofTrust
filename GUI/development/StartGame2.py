@@ -4,18 +4,12 @@
 
 import tkinter as tk
 from tkinter import ttk
-# from Matchmaking2 import *
 from Matchmaking import *
 
 def show_start_game_page(root, show_main_page_func, show_login_page_func, user):
     for widget in root.winfo_children():
         widget.destroy()
 
-    # Meminta dari server daftar pemain lain yang sudah stand-by di waiting room / sudah klik 'Start Game'
-    data = eval(c.http_client([id_become_active,user])) # dari string diubah ke array
-
-
-    # GUI
     root.title('Start Game')
     title_label = ttk.Label(root, text="Start Game Page", font=("Helvetica", 18))
     title_label.pack(pady=20)
