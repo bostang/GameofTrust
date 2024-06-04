@@ -10,7 +10,7 @@ from StartGame import show_start_game_page
 from Leaderboard import show_leaderboard_page
 
 # def show_main_page(root, show_login_page_func):
-def show_main_page(root, show_login_page_func):
+def show_main_page(root, show_login_page_func,user):
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -26,15 +26,15 @@ def show_main_page(root, show_login_page_func):
     logout_button.place(relx=0.9, rely=0.05, anchor="ne")
 
     # Start Game button
-    start_game_button = ttk.Button(root, text="Start Game", command=lambda: show_start_game_page(root, show_main_page, show_login_page_func))
+    start_game_button = ttk.Button(root, text="Start Game", command=lambda: show_start_game_page(root, show_main_page, show_login_page_func,user))
     start_game_button.pack(fill='x', expand=True, padx=20, pady=5)
 
     # Leaderboard button
-    leaderboard_button = ttk.Button(root, text="Leaderboard", command=lambda: show_leaderboard_page(root, show_main_page, show_login_page_func))
+    leaderboard_button = ttk.Button(root, text="Leaderboard", command=lambda: show_leaderboard_page(root, show_main_page, show_login_page_func,user))
     leaderboard_button.pack(fill='x', expand=True, padx=20, pady=5)
 
     # Profile button
-    profile_button = ttk.Button(root, text="Profile", command=lambda: show_profile_page(root, show_main_page, show_login_page_func))
+    profile_button = ttk.Button(root, text="Profile", command=lambda: show_profile_page(root, show_main_page, show_login_page_func,user))
     profile_button.pack(fill='x', expand=True, padx=20, pady=5)
 
 # END_OF_FILE[]

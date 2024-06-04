@@ -49,7 +49,7 @@ def create_leaderboard(root, data):
     special_user_label.grid(row=2, column=0, columnspan=3, pady=(10, 0))
 
 
-def show_leaderboard_page(root,data):
+def show_leaderboard(root,data):
     """Show the leaderboard page."""
     incoming_message_leaderboard = [
         2,
@@ -61,9 +61,9 @@ def show_leaderboard_page(root,data):
     root.geometry("400x500")  # Adjusted window size
     root.resizable(False, False)
 
-if __name__ == "__main__":
-    # root window
-    root = tk.Tk()
-    # data = sg.http_client()
-    show_leaderboard_page(root,data)
-    root.mainloop()
+# if __name__ == "__main__":
+#     # root window
+#     root = tk.Tk()
+#     # data = sg.http_client()
+#     show_leaderboard_page(root,data)
+#     root.mainloop()

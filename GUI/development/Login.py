@@ -48,7 +48,7 @@ def create_login_page(root):
                 message=f'Welcome {user}!'
             )
             # After successful login, show the main page
-            show_main_page(root, show_login_page)  # Panggil fungsi untuk menampilkan halaman utama
+            show_main_page(root, show_login_page,user)  # Panggil fungsi untuk menampilkan halaman utama
         else:
             showerror(
                 title='Error',

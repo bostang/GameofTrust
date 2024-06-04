@@ -5,7 +5,8 @@ import socket
 import logging
 import ast
 import json
-server_ip = "10.8.104.205"
+# server_ip = "10.8.104.205"
+server_ip = "192.168.116.240"
 
 
 logging.basicConfig(
