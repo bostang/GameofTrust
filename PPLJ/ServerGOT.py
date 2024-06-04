@@ -5,8 +5,12 @@ import socket
 import logging
 import ast
 import json
+from datetime import datetime
 server_ip = "10.8.103.141"
 
+matchmaking = [[0,0]]
+
+timeout = 60
 
 logging.basicConfig(
     filename='server.log',        # Log file name
@@ -172,6 +176,15 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
         self.wfile.write(response.encode())
+
+def get_id(username):
+    data = read_from_json_file('database.json')
+    print("Data from JSON file:", data)  # Debugging statement
+    for user in data:
+        if user['username'] == username:
+            return user['id']
+            
+    return 0
 
 def validation(username, password,id):
     data = read_from_json_file('database.json')
