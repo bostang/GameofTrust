@@ -10,8 +10,8 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo, showerror
-from MainPage import show_main_page  # Import fungsi untuk menampilkan halaman utama
-from client1 import *
+from MainPage2 import show_main_page  # Import fungsi untuk menampilkan halaman utama
+from client2 import *
 
 def create_login_page(root):
     """Create the login page."""
@@ -28,7 +28,7 @@ def create_login_page(root):
         """
         user = username.get()
         pwd = password.get()
-        login_valid = eval(http_client([id_login,user,pwd]))
+        login_valid = eval(socket_client([id_login,user,pwd]))
         # if user in user_data and user_data[user] == pwd:
         
         # if (eval(login_valid)):
@@ -55,7 +55,7 @@ def create_login_page(root):
         user = username.get()
         pwd = password.get()
 
-        user_exist = eval(http_client([id_register,user,pwd]));
+        user_exist = eval(socket_client([id_register,user,pwd]));
         print(f"user exist:{user_exist}") # DEBUG
         if (user_exist):
             showerror(
