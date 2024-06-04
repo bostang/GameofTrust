@@ -92,3 +92,23 @@
 2024-06-04 23:48:45,695 INFO Received data: [4, "bostang", 1]
 2024-06-04 23:48:46,047 INFO Received GET request
 2024-06-04 23:48:46,047 INFO Received data: [4, "yansen", 1]
+2024-06-04 23:51:50,375 INFO Received GET request
+2024-06-04 23:51:50,376 INFO Received data: [1, "bostang", "tes"]
+2024-06-04 23:51:53,047 INFO Received GET request
+2024-06-04 23:51:53,048 INFO Received data: [1, "yansen", "phoenix"]
+2024-06-04 23:51:56,853 INFO Received GET request
+2024-06-04 23:51:57,979 INFO Received GET request
+2024-06-04 23:51:58,308 INFO Received data: [3, "bostang", ""]
+2024-06-04 23:51:58,308 INFO Received data: [3, "yansen", ""]
+2024-06-04 23:52:00,732 INFO Received GET request
+2024-06-04 23:52:01,328 INFO Received GET request
+2024-06-04 23:52:01,452 INFO Received data: [4, "bostang", 1]
+2024-06-04 23:52:01,452 INFO Received data: [4, "yansen", 1]
+2024-06-04 23:53:06,301 INFO Received GET request
+2024-06-04 23:53:07,197 INFO Received GET request
+2024-06-04 23:53:07,494 INFO Received data: [3, "bostang", ""]
+2024-06-04 23:53:07,494 INFO Received data: [3, "yansen", ""]
+2024-06-04 23:53:09,761 INFO Received GET request
+2024-06-04 23:53:10,508 INFO Received GET request
+2024-06-04 23:53:10,633 INFO Received data: [4, "bostang", 1]
+2024-06-04 23:53:10,633 INFO Received data: [4, "yansen", 1]

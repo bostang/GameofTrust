@@ -19,7 +19,7 @@ from constant import *
 
 server_ip = "10.8.105.201"
 matchmaking = [[0, 0]]
-rooms = [["001002", 1, 2, 0, 0]]   # [room_id, player1_id, player2_id, action1, action2]
+rooms = []   # [room_id, player1_id, player2_id, action1, action2]
 
 
 
@@ -311,6 +311,7 @@ def logic(user_data_list):
                             result1, result2 = get_outcome(rooms[room_index][3], rooms[room_index][4])    # Kalkulasi hasil
                             
                             remove_room(room_id)  # Menghilangkan room
+                            print(rooms)
 
                             # Mengumumkan hasil dengan memeriksa pemain ke berapa
                             if (player_no == 1):

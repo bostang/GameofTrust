@@ -8,7 +8,7 @@ from tkinter.messagebox import showinfo, showerror
 from constant import *
 import client1 as c
 
-def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page, show_login_page_func,user):
+def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page_func, show_login_page_func,user):
     # ini adalah callback function ketika button 'start random matchmaking' ditekan
 
     # mengirim request ke server
@@ -25,7 +25,7 @@ def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page
         )
         # kembali ke halaman sebelumnya
         # show_start_game_page_func(root, show_main_page, show_login_page_func,user);
-        show_main_page(root)
+        show_main_page_func(root, show_login_page_func,user)
     else: # lanjut main
         showinfo(
         title='Sukses matchmaking',
@@ -49,7 +49,7 @@ def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page
         )
         # kembali lagi ke main menu
         # show_start_game_page_func(root, show_main_page, show_login_page_func,user);
-        show_main_page(root)
+        show_main_page_func(root, show_login_page_func,user)
 
 
 
@@ -61,7 +61,7 @@ def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page
         )
         # kembali lagi ke main menu
         # show_start_game_page_func(root, show_main_page, show_login_page_func,user);
-        show_main_page(root)
+        show_main_page_func(root, show_login_page_func,user)
 
     # Warna latar belakang dan teks untuk tombol 'Cooperate'
     cooperate_button = tk.Button(root, text="Cooperate", command=on_cooperate, bg="#4CAF50", fg="white")
@@ -78,7 +78,7 @@ def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page
     back_button = ttk.Button(root, text="Back to Matchmaking", command=lambda: show_start_game_page_func(root, show_main_page, show_login_page_func,user))
     back_button.pack(fill='x', expand=True, padx=20, pady=5)
 
-def show_targeted_matchmaking_func(root, show_start_game_page_func, show_main_page, show_login_page_func,user):
+def show_targeted_matchmaking_func(root, show_start_game_page_func, show_main_page_func, show_login_page_func,user):
     # ini adalah callback function ketika button 'start targeted matchmaking' ditekan
 
     # mengirim request ke server
