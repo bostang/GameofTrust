@@ -49,3 +49,54 @@
 2024-06-04 16:11:15,354 INFO Received data: ["3", "yansen", "0"]
 2024-06-04 16:11:15,354 INFO Received GET request
 2024-06-04 16:11:36,356 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:13:50,072 INFO Received GET request
+2024-06-04 16:14:11,073 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:14:11,073 INFO Received GET request
+2024-06-04 16:14:32,075 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:30:17,444 INFO Received GET request
+2024-06-04 16:30:25,910 INFO Received GET request
+2024-06-04 16:30:38,450 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:30:47,021 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:31:43,854 INFO Received GET request
+2024-06-04 16:31:43,855 INFO Received data: ["2", "yansen"]
+2024-06-04 16:32:04,139 INFO Received GET request
+2024-06-04 16:32:06,322 INFO Received GET request
+2024-06-04 16:32:25,169 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:32:27,434 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:34:06,543 INFO Received GET request
+2024-06-04 16:35:06,246 INFO Received GET request
+2024-06-04 16:35:12,915 INFO Received GET request
+2024-06-04 16:35:27,250 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:35:34,072 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:37:22,950 INFO Received GET request
+2024-06-04 16:37:32,345 INFO Received GET request
+2024-06-04 16:37:43,952 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:37:53,487 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:38:39,439 INFO Received GET request
+2024-06-04 16:38:45,452 INFO Received GET request
+2024-06-04 16:39:00,446 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:39:06,628 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:40:00,867 INFO Received GET request
+2024-06-04 16:40:05,991 INFO Received GET request
+2024-06-04 16:40:21,873 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:40:27,103 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:41:59,375 INFO Received GET request
+2024-06-04 16:42:07,180 INFO Received GET request
+2024-06-04 16:42:20,386 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:42:28,340 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:45:52,976 INFO Received GET request
+2024-06-04 16:45:58,957 INFO Received GET request
+2024-06-04 16:46:13,977 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:46:20,117 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:47:43,395 INFO Received GET request
+2024-06-04 16:47:48,114 INFO Received GET request
+2024-06-04 16:48:04,396 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:48:09,258 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:52:18,308 INFO Received GET request
+2024-06-04 16:52:23,393 INFO Received GET request
+2024-06-04 16:52:23,518 INFO Received data: ["3", "lord", "0"]
+2024-06-04 16:52:23,518 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 16:54:13,061 INFO Received GET request
+2024-06-04 16:54:17,632 INFO Received GET request
+2024-06-04 16:54:34,073 INFO Received data: ["3", "yansen", "4"]
+2024-06-04 16:54:38,775 INFO Received data: ["3", "lord", "1"]
