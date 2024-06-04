@@ -2,7 +2,7 @@ import requests
 import json
 
 def http_client():
-    target_ip = "192.168.24.214"
+    target_ip = "10.8.105.201"
     user_input = input("Enter data to send to the HTTP server: ")
     data_list =user_input.split(',')
     print(data_list)

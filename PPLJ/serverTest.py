@@ -7,11 +7,17 @@ import ast
 import json
 from datetime import datetime
 
-server_ip = "192.168.24.214"
+server_ip = "10.8.105.201"
+
+
 matchmaking = [[0, 0]]
-MAX_ROOM = 5
-room = []
 timeout = 60
+
+room = [["001002", 1, 2, 0, 0]]   # [room_id, player1_id, player2_id, action1, action2]
+
+# Define constants
+COOPERATE = 1
+CHEAT = 2
 
 logging.basicConfig(
     filename='server.log',        
@@ -82,54 +88,71 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         elif msg_id == 3:   # room join
             id = int(user_data_list[1])
             matchmaking_id = int(user_data_list[2])
-            print("msg_id = ", msg_id, ", id = ", id, ", matchmaking_id = ", matchmaking_id) # Input
-            print(matchmaking)  # Debugging to see matchmaking array
+            print("msg_id = ", msg_id, ", id = ", id, ", matchmaking_id = ", matchmaking_id) # Debugging untuk melihat input 
+            print(matchmaking)  # Debugging untuk melihat array matchmaking
 
-            if matchmaking_id == 0:
+            if matchmaking_id == 0: # Random Matchmaking
                 
-                if matchmaking[0][0] != 0:
-                    matchmaking[0][1] = id
-                    response = 'Found other player'
+                if matchmaking[0][0] != 0: # Jika ada pemain lain yang masuk random matchmaking
+                    matchmaking[0][1] = id  # Tambahkan id supaya diketahui check pemain satu lagi
+                    response = f"{matchmaking[0][0]:0>3}{matchmaking[0][1]:0>3}"    # Memberikan room_id
                 else:
-                    matchmaking[0][0] = id
+                    matchmaking[0][0] = id  # Tambah request
+
+                    # Menunggu request pemain lain sampai timeout/ditemukan
                     match_found = False
                     start_time = datetime.now()
                     while (datetime.now() - start_time).seconds <= timeout and not match_found:
                         if matchmaking[0][1] != 0:
                             match_found = True
+
                     if not match_found:
-                        response = 'Timeout, other player not found'
+                        response = 'Timeout, other player not found'    # Memberitahukan pemain bahwa request timeout
                     else:
-                        response = 'Found other player'
-                    matchmaking[0] = [0, 0]
-            else:
+                        response = create_room(matchmaking[0][0], matchmaking[0][1], room) # Memberikan room_id dan room
+
+                    matchmaking[0] = [0, 0] # Reset random matchmaking
+            
+            else:   # Targeted matchmaking
+                # Melihat jika pemain lain telah membuat request matchmaking
                 match_found1 = False
                 for matchmaking_room in matchmaking:
                     if (matchmaking_room[0] == matchmaking_id):
-                        matchmaking_room[1] = id
+                        matchmaking_room[1] = id    # Tambahkan id supaya diketahui check pemain satu lagi
                         match_found1 = True
                         break
-                print("match found1 = ", match_found1)
 
-                if match_found1:
-                    response = 'Found other player'
-                else:
-                    matchmaking.append([id, 0])
+                print("match found1 = ", match_found1)# Debugging untuk melihat jika pemain lain telah membuat request matchmaking
+
+                if match_found1:    # Sudah ada
+                    response = f"{matchmaking_id:0>3}{id:0>3}"  # Memberikan room_id
+
+                else:   # Belum ada
+                    matchmaking.append([id, 0]) # Tambah request
+                    
+                    # Menunggu request pemain lain sampai timeout/ditemukan
                     match_found2 = False
-                    start_time = datetime.now()
+                    start_time = datetime.now() 
                     while (datetime.now() - start_time).seconds <= timeout and not match_found2:
                         for matchmaking_room in matchmaking:
                             if matchmaking_room[0] == id and matchmaking_room[1] != 0:
-                                matchmaking_room[1] = matchmaking_id
+                                matchmaking_room[1] = matchmaking_id    
                                 match_found2 = True
+
                     if not match_found2:
-                        response = 'Timeout, other player not found'
+                        response = 'Timeout, other player not found'    # Memberitahukan pemain bahwa request timeout
                     else:
-                        response = 'Found other player'
-                    matchmaking[:] = [matchmaking_room for matchmaking_room in matchmaking if matchmaking_room[0] != id]
+                        response = create_room(id, matchmaking_id, room)    # Memberikan room_id dan room
+
+                    matchmaking[:] = [matchmaking_room for matchmaking_room in matchmaking if matchmaking_room[0] != id]    # Menghapus request matchmaking karena timeout
         
         elif msg_id == 4:   # match start
-            pass
+            print(room)
+            player_id = int(user_data_list[1])
+            room_id = user_data_list[2]
+            action = int(user_data_list[3])
+
+
         logging.info(f'Received data: {user_data}')
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
@@ -142,6 +165,18 @@ def get_id(username):
         if user['username'] == username:
             return user['id']
     return 0
+
+def create_room(player1_id, player2_id, room):
+    room_id = f"{player1_id:0>3}{player2_id:0>3}"
+    room.append([room_id, player1_id, player2_id, 0, 0])
+
+    return room_id
+
+def find_room(room_id, room):
+    for r in range(len(room)):
+        if (r[0] == room_id):
+            return r
+    return -1
 
 def validation(username, password, id):
     data = read_from_json_file('database.json')
