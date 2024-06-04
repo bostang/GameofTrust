@@ -109,3 +109,36 @@
 2024-06-04 17:14:09,149 INFO Received GET request
 2024-06-04 17:14:09,291 INFO Received data: ["3", "yansen", "4"]
 2024-06-04 17:14:09,291 INFO Received data: ["3", "lord", "1"]
+2024-06-04 17:16:15,837 INFO Received GET request
+2024-06-04 17:16:21,170 INFO Received GET request
+2024-06-04 17:16:21,343 INFO Received data: ["3", "newbie", "0"]
+2024-06-04 17:16:21,343 INFO Received data: ["3", "yansen", "0"]
+2024-06-04 17:18:00,866 INFO Received GET request
+2024-06-04 17:18:42,610 INFO Received GET request
+2024-06-04 17:18:46,950 INFO Received GET request
+2024-06-04 17:18:46,998 INFO Received data: ["3", "2", "0"]
+2024-06-04 17:18:46,998 INFO Received data: ["3", "1", "0"]
+2024-06-04 17:18:55,063 INFO Received GET request
+2024-06-04 17:18:58,623 INFO Received GET request
+2024-06-04 17:18:58,670 INFO Received data: ["3", "1", "2"]
+2024-06-04 17:18:58,670 INFO Received data: ["3", "2", "1"]
+2024-06-04 17:26:49,097 INFO Received GET request
+2024-06-04 17:26:54,594 INFO Received GET request
+2024-06-04 17:26:54,639 INFO Received data: ["3", "2", "0"]
+2024-06-04 17:26:54,639 INFO Received data: ["3", "1", "0"]
+2024-06-04 17:26:58,228 INFO Received GET request
+2024-06-04 17:27:01,786 INFO Received GET request
+2024-06-04 17:27:01,832 INFO Received data: ["3", "2", "1"]
+2024-06-04 17:27:01,832 INFO Received data: ["3", "1", "2"]
+2024-06-04 17:32:07,986 INFO Received GET request
+2024-06-04 17:32:14,488 INFO Received GET request
+2024-06-04 17:32:14,535 INFO Received data: ["3", "2", "0"]
+2024-06-04 17:32:14,535 INFO Received data: ["3", "1", "0"]
+2024-06-04 17:32:33,219 INFO Received GET request
+2024-06-04 17:32:44,340 INFO Received GET request
+2024-06-04 17:32:44,386 INFO Received data: ["3", "2", "1"]
+2024-06-04 17:32:44,386 INFO Received data: ["3", "1", "2"]
+2024-06-04 17:33:15,855 INFO Received GET request
+2024-06-04 17:33:22,705 INFO Received GET request
+2024-06-04 17:34:16,856 INFO Received data: ["3", "2", "1"]
+2024-06-04 17:34:23,770 INFO Received data: ["3", "1", "3"]

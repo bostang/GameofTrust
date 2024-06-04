@@ -9,6 +9,8 @@ from datetime import datetime
 
 server_ip = "192.168.24.214"
 matchmaking = [[0, 0]]
+MAX_ROOM = 5
+room = []
 timeout = 60
 
 logging.basicConfig(
@@ -77,11 +79,10 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
             username_coin = next((user["coin"] for user in sorted_data if user["username"] == username), 0)
             player_leaderboard = [username, username_coin, ranking]
             response = f'21,{leaderboard},{player_leaderboard}'
-        elif msg_id == 3:
-            username = user_data_list[1]
-            id = get_id(username)
+        elif msg_id == 3:   # room join
+            id = int(user_data_list[1])
             matchmaking_id = int(user_data_list[2])
-            print("msg_id = ", msg_id, ", username = ", username, ", id = ", id, ", matchmaking_id = ", matchmaking_id) # Input
+            print("msg_id = ", msg_id, ", id = ", id, ", matchmaking_id = ", matchmaking_id) # Input
             print(matchmaking)  # Debugging to see matchmaking array
 
             if matchmaking_id == 0:
@@ -103,9 +104,9 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                     matchmaking[0] = [0, 0]
             else:
                 match_found1 = False
-                for room in matchmaking:
-                    if (room[0] == matchmaking_id):
-                        room[1] = id
+                for matchmaking_room in matchmaking:
+                    if (matchmaking_room[0] == matchmaking_id):
+                        matchmaking_room[1] = id
                         match_found1 = True
                         break
                 print("match found1 = ", match_found1)
@@ -117,16 +118,18 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
                     match_found2 = False
                     start_time = datetime.now()
                     while (datetime.now() - start_time).seconds <= timeout and not match_found2:
-                        for room in matchmaking:
-                            if room[0] == id and room[1] != 0:
-                                room[1] = matchmaking_id
+                        for matchmaking_room in matchmaking:
+                            if matchmaking_room[0] == id and matchmaking_room[1] != 0:
+                                matchmaking_room[1] = matchmaking_id
                                 match_found2 = True
                     if not match_found2:
                         response = 'Timeout, other player not found'
                     else:
                         response = 'Found other player'
-                    matchmaking[:] = [room for room in matchmaking if room[0] != id]
-
+                    matchmaking[:] = [matchmaking_room for matchmaking_room in matchmaking if matchmaking_room[0] != id]
+        
+        elif msg_id == 4:   # match start
+            pass
         logging.info(f'Received data: {user_data}')
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
