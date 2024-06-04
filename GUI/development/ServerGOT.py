@@ -16,7 +16,7 @@ import ast
 import json
 from constant import *
 
-server_ip = "10.8.102.118"
+server_ip = "192.168.116.240"
 
 
 logging.basicConfig(

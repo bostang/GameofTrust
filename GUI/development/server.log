@@ -211,3 +211,7 @@
 2024-06-04 20:24:43,563 INFO Received data: 1,yansen,adasd
 2024-06-04 20:27:58,058 INFO Received GET request
 2024-06-04 20:27:58,059 INFO Received data: [12, "dadad", "dasdada"]
+2024-06-04 21:30:20,479 INFO Received GET request
+2024-06-04 21:30:20,492 INFO Received data: [1, "bostang", "tes"]
+2024-06-04 21:30:23,967 INFO Received GET request
+2024-06-04 21:30:23,968 INFO Received data: [2, "bostang"]

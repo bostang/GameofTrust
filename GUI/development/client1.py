@@ -16,7 +16,7 @@ def http_client(data_list):
     # Format pemanggilan: http_client([msgId,Username])
     
     # IP target server
-    target_ip = "10.8.102.118"
+    target_ip = "192.168.116.240"
     
     # Cetak data_list untuk debugging
     print("data list:",data_list,sep=' ')
