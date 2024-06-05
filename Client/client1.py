@@ -10,7 +10,14 @@
 import requests
 import json
 import logging
+import logging
 from constant import *
+
+logging.basicConfig(
+    filename='client_http.log',        # Nama file log
+    level=logging.DEBUG,          # Level log
+    format='%(asctime)s %(levelname)s %(message)s'  # Format log
+)
 
 logging.basicConfig(
     filename='client_http.log',        # Nama file log
@@ -31,11 +38,13 @@ def http_client(data_list):
     # Mengonversi data_list menjadi JSON
     json_data = json.dumps(data_list)
     logging.info(f'Request response for message: {data_list} to server')
+    logging.info(f'Request response for message: {data_list} to server')
     # Membentuk URL dengan data JSON
     url = f'http://{target_ip}:8080?data={json_data}'
     
     # Mengirimkan permintaan GET ke server
     response = requests.get(url)
+    logging.info(f'Response from server: {response.text}')
     logging.info(f'Response from server: {response.text}')
     # Cetak respons dari server untuk debugging
     print('HTTP Server Response:', response.text)

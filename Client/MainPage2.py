@@ -6,7 +6,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
 from Profile import show_profile_page
-from StartGame import show_start_game_page
+from StartGame2 import show_start_game_page
 from Leaderboard2 import show_leaderboard_page
 
 # def show_main_page(root, show_login_page_func):
