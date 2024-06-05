@@ -6,7 +6,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo, showerror
 from constant import *
-import client1 as c
+import client2 as c
 
 def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page_func, show_login_page_func,user):
     # ini adalah callback function ketika button 'start random matchmaking' ditekan
