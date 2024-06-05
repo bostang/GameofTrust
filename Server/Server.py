@@ -1,7 +1,8 @@
-# Nama File : ServerGOT.py
+# Nama File : Server.py
 # Programmer : 
     #   Yansen Dwi Putra (13220056)
     #   Bostang Palaguna (13220055)
+    #   Karma Kunga (13220028)
 # Tanggal : 
     # Minggu, 2 Juni 2024
     # Selasa, 4 Juni 2024
