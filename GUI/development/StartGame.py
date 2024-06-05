@@ -7,6 +7,7 @@ from tkinter import ttk
 # from Matchmaking2 import *
 from Matchmaking import *
 from display_active_user import *
+import client1 as c
 
 def show_start_game_page(root, show_main_page_func, show_login_page_func, user):
     for widget in root.winfo_children():

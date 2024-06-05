@@ -8,9 +8,16 @@ from tkinter.messagebox import showinfo
 from Profile import show_profile_page
 from StartGame import show_start_game_page
 from Leaderboard import show_leaderboard_page
+from constant import *
+import client1 as c
 
 # def show_main_page(root, show_login_page_func):
 def show_main_page(root, show_login_page_func,user):
+    
+    # Menandakan dia sebagai in-active (catatan : aktif ketika klik start game)
+    data = eval(c.http_client([id_become_inactive,user])) # dari string diubah ke array
+
+    # GUI
     for widget in root.winfo_children():
         widget.destroy()
 

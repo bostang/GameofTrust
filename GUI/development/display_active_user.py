@@ -1,6 +1,10 @@
 import tkinter as tk
 
 def display_active_users(root, users):
+    # Add a title label for the online players list
+    title_label = tk.Label(root, text="Daftar pemain online", font=("Helvetica", 16, "bold"))
+    title_label.pack(anchor='w', pady=10)
+
     for user in users:
         frame = tk.Frame(root)
         frame.pack(anchor='w', pady=2)
