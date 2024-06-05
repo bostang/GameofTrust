@@ -64,7 +64,10 @@ def add_active_players(username):
     active_players.append(username)
     
 def remove_active_players(username):
-    active_players.remove(username)
+    try:
+        active_players.remove(username)
+    except:
+        pass
 
 def get_id(username):
     data = read_from_json_file('database.json')
@@ -198,8 +201,8 @@ def logic(user_data_list):
 
         print(active_players)   # Debugging code
 
-        response = f'{active_players}'  # Return currently active player data
         add_active_players(username)
+        response = f'{active_players}'  # Return currently active player data   
 
         print(active_players)   # Debugging code
 
@@ -211,6 +214,8 @@ def logic(user_data_list):
     elif msg_id == id_become_inactive:   # become inactive
         username = user_data_list[1]
 
+        print(active_players)   # Debugging code
+        
         remove_active_players(username) # Debugging code
 
         response = f'{active_players}'  # Return currently active player data
@@ -233,7 +238,7 @@ def logic(user_data_list):
             
             if matchmaking[0][0] != 0: # Jika ada pemain lain yang masuk random matchmaking
                 matchmaking[0][1] = id  # Tambahkan id supaya diketahui check pemain satu lagi
-                # remove_active_players(username)
+                remove_active_players(username)
                 response = f'{True}'    # Memberikan room_id 
                 print(matchmaking)  # Debugging untuk melihat array matchmaking
 
@@ -248,7 +253,7 @@ def logic(user_data_list):
                     if matchmaking[0][1] != 0:
                         match_found = True
 
-                # remove_active_players(username)
+                remove_active_players(username)
 
                 if not match_found:
                     response = f'{False}'    # Memberitahukan pemain bahwa request timeout
@@ -276,7 +281,7 @@ def logic(user_data_list):
                 # print("match_found1 = ", match_found1)# Debugging untuk melihat jika pemain lain telah membuat request matchmaking
 
                 if match_found1:    # Sudah ada
-                    # remove_active_players(username)
+                    remove_active_players(username)
                     response = f'{True}'  # Memberikan room_id  
                     print(matchmaking)  # Debugging untuk melihat array matchmaking        
 
@@ -294,7 +299,7 @@ def logic(user_data_list):
                                 matchmaking_room[1] = matchmaking_id    
                                 match_found2 = True
 
-                    # remove_active_players(username)
+                    remove_active_players(username)
                     if (not match_found2):
                         response = f'{False}'  # Memberitahukan pemain bahwa request timeout
                     else:
