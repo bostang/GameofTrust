@@ -98,3 +98,163 @@
 2024-06-05 10:38:46,232 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
 2024-06-05 10:38:46,245 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22bostang%22%5D HTTP/1.1" 200 None
 2024-06-05 10:38:46,245 INFO Response from server: ['bostang']
+2024-06-05 10:46:37,314 INFO Request response for message: [1, 'bostang', 'tes'] to server
+2024-06-05 10:46:37,319 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:46:37,327 DEBUG http://10.6.105.64:8080 "GET /?data=%5B1,%20%22bostang%22,%20%22tes%22%5D HTTP/1.1" 200 None
+2024-06-05 10:46:37,328 INFO Response from server: True
+2024-06-05 10:46:37,911 INFO Request response for message: [4, 'bostang'] to server
+2024-06-05 10:46:37,915 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:46:37,924 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 10:46:37,924 INFO Response from server: ['yansen']
+2024-06-05 10:46:38,845 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 10:46:38,846 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:46:38,855 DEBUG http://10.6.105.64:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 10:46:38,855 INFO Response from server: ['yansen', 'bostang']
+2024-06-05 10:46:51,738 INFO Request response for message: [4, 'bostang'] to server
+2024-06-05 10:46:51,740 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:46:52,030 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 10:46:52,030 INFO Response from server: ['yansen']
+2024-06-05 10:47:24,329 INFO Request response for message: [1, 'bostang', 'tes'] to server
+2024-06-05 10:47:24,335 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:24,343 DEBUG http://10.6.105.64:8080 "GET /?data=%5B1,%20%22bostang%22,%20%22tes%22%5D HTTP/1.1" 200 None
+2024-06-05 10:47:24,344 INFO Response from server: True
+2024-06-05 10:47:25,683 INFO Request response for message: [4, 'bostang'] to server
+2024-06-05 10:47:25,688 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:25,698 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 10:47:25,701 INFO Response from server: []
+2024-06-05 10:47:26,626 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 10:47:26,629 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:26,817 DEBUG http://10.6.105.64:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 10:47:26,848 INFO Response from server: ['yansen', 'bostang']
+2024-06-05 10:47:27,951 INFO Request response for message: [5, 'bostang', ''] to server
+2024-06-05 10:47:27,953 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:28,377 DEBUG http://10.6.105.64:8080 "GET /?data=%5B5,%20%22bostang%22,%20%22%22%5D HTTP/1.1" 200 None
+2024-06-05 10:47:28,378 INFO Response from server: True
+2024-06-05 10:47:31,255 INFO Request response for message: [6, 'bostang', 2] to server
+2024-06-05 10:47:31,258 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:31,508 DEBUG http://10.6.105.64:8080 "GET /?data=%5B6,%20%22bostang%22,%202%5D HTTP/1.1" 200 None
+2024-06-05 10:47:31,508 INFO Response from server: [3,-1]
+2024-06-05 10:47:32,631 INFO Request response for message: [4, 'bostang'] to server
+2024-06-05 10:47:32,636 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:32,645 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 10:47:32,646 INFO Response from server: []
+2024-06-05 10:47:33,882 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 10:47:33,885 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:33,894 DEBUG http://10.6.105.64:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 10:47:33,895 INFO Response from server: ['bostang']
+2024-06-05 10:47:42,529 INFO Request response for message: [5, 'bostang', 'yansen'] to server
+2024-06-05 10:47:42,532 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:43,122 DEBUG http://10.6.105.64:8080 "GET /?data=%5B5,%20%22bostang%22,%20%22yansen%22%5D HTTP/1.1" 200 None
+2024-06-05 10:47:43,123 INFO Response from server: True
+2024-06-05 10:47:46,053 INFO Request response for message: [6, 'bostang', 2] to server
+2024-06-05 10:47:46,054 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:46,403 DEBUG http://10.6.105.64:8080 "GET /?data=%5B6,%20%22bostang%22,%202%5D HTTP/1.1" 200 None
+2024-06-05 10:47:46,404 INFO Response from server: [0,0]
+2024-06-05 10:47:47,678 INFO Request response for message: [4, 'bostang'] to server
+2024-06-05 10:47:47,681 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:47,700 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 10:47:47,701 INFO Response from server: []
+2024-06-05 10:47:49,341 INFO Request response for message: [2, 'bostang'] to server
+2024-06-05 10:47:49,343 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:47:49,375 DEBUG http://10.6.105.64:8080 "GET /?data=%5B2,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 10:47:49,376 INFO Response from server: 12,[['lord', 9999], ['yansen', 28], ['bostang', 28], ['kunga', 14], ['a', 2], ['newbie', 0]],['bostang', 3, 28]
+2024-06-05 10:48:15,916 INFO Request response for message: [4, 'bostang'] to server
+2024-06-05 10:48:15,917 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:48:15,927 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 10:48:15,928 INFO Response from server: []
+2024-06-05 10:49:38,547 INFO Request response for message: [1, '', ''] to server
+2024-06-05 10:49:38,548 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:49:38,557 DEBUG http://10.6.105.64:8080 "GET /?data=%5B1,%20%22%22,%20%22%22%5D HTTP/1.1" 200 None
+2024-06-05 10:49:38,558 INFO Response from server: False
+2024-06-05 10:54:00,479 INFO Request response for message: [12, 'yansen', 'abc'] to server
+2024-06-05 10:54:00,481 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:54:00,495 DEBUG http://10.6.105.64:8080 "GET /?data=%5B12,%20%22yansen%22,%20%22abc%22%5D HTTP/1.1" 200 None
+2024-06-05 10:54:00,496 INFO Response from server: True
+2024-06-05 10:54:16,569 INFO Request response for message: [12, '', ''] to server
+2024-06-05 10:54:16,570 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:54:16,588 DEBUG http://10.6.105.64:8080 "GET /?data=%5B12,%20%22%22,%20%22%22%5D HTTP/1.1" 200 None
+2024-06-05 10:54:16,589 INFO Response from server: False
+2024-06-05 10:55:00,134 INFO Request response for message: [12, 'b', 'b'] to server
+2024-06-05 10:55:00,138 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:55:00,152 DEBUG http://10.6.105.64:8080 "GET /?data=%5B12,%20%22b%22,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:55:00,153 INFO Response from server: False
+2024-06-05 10:55:11,729 INFO Request response for message: [1, 'b', 'b'] to server
+2024-06-05 10:55:11,731 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:55:11,744 DEBUG http://10.6.105.64:8080 "GET /?data=%5B1,%20%22b%22,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:55:11,744 INFO Response from server: True
+2024-06-05 10:55:16,601 INFO Request response for message: [4, 'b'] to server
+2024-06-05 10:55:16,603 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:55:16,628 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:55:16,628 INFO Response from server: []
+2024-06-05 10:55:22,484 INFO Request response for message: [1, 'b', 'c'] to server
+2024-06-05 10:55:22,486 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:55:22,553 DEBUG http://10.6.105.64:8080 "GET /?data=%5B1,%20%22b%22,%20%22c%22%5D HTTP/1.1" 200 None
+2024-06-05 10:55:22,554 INFO Response from server: False
+2024-06-05 10:55:27,046 INFO Request response for message: [1, 'b', 'b'] to server
+2024-06-05 10:55:27,048 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:55:27,094 DEBUG http://10.6.105.64:8080 "GET /?data=%5B1,%20%22b%22,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:55:27,094 INFO Response from server: True
+2024-06-05 10:55:30,220 INFO Request response for message: [4, 'b'] to server
+2024-06-05 10:55:30,222 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:55:30,246 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:55:30,246 INFO Response from server: []
+2024-06-05 10:56:33,356 INFO Request response for message: [1, 'b', 'b'] to server
+2024-06-05 10:56:33,362 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:56:33,378 DEBUG http://10.6.105.64:8080 "GET /?data=%5B1,%20%22b%22,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:56:33,378 INFO Response from server: True
+2024-06-05 10:56:35,141 INFO Request response for message: [4, 'b'] to server
+2024-06-05 10:56:35,144 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:56:35,161 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:56:35,162 INFO Response from server: []
+2024-06-05 10:57:25,091 INFO Request response for message: [3, 'b'] to server
+2024-06-05 10:57:25,093 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:57:25,126 DEBUG http://10.6.105.64:8080 "GET /?data=%5B3,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:57:25,126 INFO Response from server: ['yansen', 'b']
+2024-06-05 10:57:55,806 INFO Request response for message: [5, 'b', ''] to server
+2024-06-05 10:57:55,808 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:57:56,192 DEBUG http://10.6.105.64:8080 "GET /?data=%5B5,%20%22b%22,%20%22%22%5D HTTP/1.1" 200 None
+2024-06-05 10:57:56,192 INFO Response from server: True
+2024-06-05 10:58:22,249 INFO Request response for message: [6, 'b', 2] to server
+2024-06-05 10:58:22,251 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:58:23,106 DEBUG http://10.6.105.64:8080 "GET /?data=%5B6,%20%22b%22,%202%5D HTTP/1.1" 200 None
+2024-06-05 10:58:23,106 INFO Response from server: [3,-1]
+2024-06-05 10:58:32,982 INFO Request response for message: [4, 'b'] to server
+2024-06-05 10:58:32,985 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:58:33,009 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:58:33,010 INFO Response from server: []
+2024-06-05 10:58:34,802 INFO Request response for message: [2, 'b'] to server
+2024-06-05 10:58:34,803 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:58:34,821 DEBUG http://10.6.105.64:8080 "GET /?data=%5B2,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:58:34,822 INFO Response from server: 12,[['lord', 9999], ['bostang', 28], ['yansen', 27], ['kunga', 14], ['b', 3], ['a', 2], ['newbie', 0], ['', 0]],['b', 5, 3]
+2024-06-05 10:59:27,482 INFO Request response for message: [4, 'b'] to server
+2024-06-05 10:59:27,484 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 10:59:27,526 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 10:59:27,526 INFO Response from server: ['yansen']
+2024-06-05 11:01:33,946 INFO Request response for message: [3, 'b'] to server
+2024-06-05 11:01:33,948 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 11:01:34,000 DEBUG http://10.6.105.64:8080 "GET /?data=%5B3,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 11:01:34,000 INFO Response from server: ['yansen', 'b']
+2024-06-05 11:02:09,466 INFO Request response for message: [5, 'b', 'kunga'] to server
+2024-06-05 11:02:09,469 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 11:02:20,656 DEBUG http://10.6.105.64:8080 "GET /?data=%5B5,%20%22b%22,%20%22kunga%22%5D HTTP/1.1" 200 None
+2024-06-05 11:02:20,656 INFO Response from server: False
+2024-06-05 11:02:23,850 INFO Request response for message: [4, 'b'] to server
+2024-06-05 11:02:23,853 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 11:02:23,880 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 11:02:23,881 INFO Response from server: ['yansen']
+2024-06-05 11:02:25,471 INFO Request response for message: [3, 'b'] to server
+2024-06-05 11:02:25,473 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 11:02:25,507 DEBUG http://10.6.105.64:8080 "GET /?data=%5B3,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 11:02:25,508 INFO Response from server: ['yansen', 'b']
+2024-06-05 11:03:06,478 INFO Request response for message: [5, 'b', 'yansen'] to server
+2024-06-05 11:03:06,480 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 11:03:07,099 DEBUG http://10.6.105.64:8080 "GET /?data=%5B5,%20%22b%22,%20%22yansen%22%5D HTTP/1.1" 200 None
+2024-06-05 11:03:07,099 INFO Response from server: True
+2024-06-05 11:03:16,302 INFO Request response for message: [6, 'b', 1] to server
+2024-06-05 11:03:16,304 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 11:03:16,588 DEBUG http://10.6.105.64:8080 "GET /?data=%5B6,%20%22b%22,%201%5D HTTP/1.1" 200 None
+2024-06-05 11:03:16,589 INFO Response from server: [-1,3]
+2024-06-05 11:03:21,028 INFO Request response for message: [4, 'b'] to server
+2024-06-05 11:03:21,033 DEBUG Starting new HTTP connection (1): 10.6.105.64:8080
+2024-06-05 11:03:21,048 DEBUG http://10.6.105.64:8080 "GET /?data=%5B4,%20%22b%22%5D HTTP/1.1" 200 None
+2024-06-05 11:03:21,049 INFO Response from server: []
