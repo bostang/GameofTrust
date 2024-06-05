@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import ttk
 # from Matchmaking2 import *
 from Matchmaking import *
+from display_active_user import *
 
 def show_start_game_page(root, show_main_page_func, show_login_page_func, user):
     for widget in root.winfo_children():
@@ -14,6 +15,11 @@ def show_start_game_page(root, show_main_page_func, show_login_page_func, user):
     # Meminta dari server daftar pemain lain yang sudah stand-by di waiting room / sudah klik 'Start Game'
     data = eval(c.http_client([id_become_active,user])) # dari string diubah ke array
 
+    list_active_player = data
+    # for k in range(data):
+    #     print(k,player[k],sep=". ")
+    print(list_active_player) # DEBUG
+    display_active_users(root, list_active_player) # menampilkan list user aktif (GUI)
 
     # GUI
     root.title('Start Game')
