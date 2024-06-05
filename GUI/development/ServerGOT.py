@@ -211,7 +211,7 @@ def logic(user_data_list):
     elif msg_id == id_become_inactive:   # become inactive
         username = user_data_list[1]
 
-        # remove_active_players(username) # Debugging code
+        remove_active_players(username) # Debugging code
 
         response = f'{active_players}'  # Return currently active player data
 
