@@ -15,7 +15,8 @@ CHEAT = 2
 # Poin menang, kalah, seri
 WIN_POINT = 3
 LOSE_POINT = -1
-DRAW_POINT = 2
+COOPERATE_DRAW_POINT = 2
+CHEAT_DRAW_POINT = 0
 
 # keberhasilan/kegagalan
 
