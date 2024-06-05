@@ -47,7 +47,6 @@ def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page
             message=f'Anda memilih kooperasi!\npoin anda:{data[0]}\npoin lawan:{data[1]}'
             )
             # kembali lagi ke main menu
-            # show_start_game_page_func(root, show_main_page, show_login_page_func,user);
             show_main_page_func(root, show_login_page_func,user)
 
         def on_cheat():
@@ -57,7 +56,6 @@ def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page
             message=f'Anda memilih cheating!\npoin anda:{data[0]}\npoin lawan:{data[1]}'
             )
             # kembali lagi ke main menu
-            # show_start_game_page_func(root, show_main_page, show_login_page_func,user);
             show_main_page_func(root, show_login_page_func,user)
 
         # Warna latar belakang dan teks untuk tombol 'Cooperate'
@@ -69,11 +67,7 @@ def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page
         cheat_button = tk.Button(root, text="Cheat", command=on_cheat, bg="#f44336", fg="white")
         cheat_button.config(font=("Arial", 12))
         cheat_button.pack(pady=10, padx=20, ipadx=10, ipady=5, fill=tk.BOTH)
-
-        # back button
-        back_button = ttk.Button(root, text="Back to Matchmaking", command=lambda: show_start_game_page_func(root, show_main_page_func, show_login_page_func,user))
-        back_button.pack(fill='x', expand=True, padx=20, pady=5)
-
+       
 def show_targeted_matchmaking_func(root, show_start_game_page_func, show_main_page_func, show_login_page_func,user):
     # ini adalah callback function ketika button 'start targeted matchmaking' ditekan
 
@@ -97,11 +91,6 @@ def show_targeted_matchmaking_func(root, show_start_game_page_func, show_main_pa
             message=f'opponent looked for: {opponent_username.get()}!'
         ) 
         # melakukan matchmaking dengan user lawan yang telah dicari
-        # print("sebelum kirim data")
-        # print(f"{type("__NOT_VALID__") == type(opponent_username.get())}")
-        # print(type(opponent_username.get()))
-        # print(type(opponent_username))
-        # data = eval(c.http_client([id_room_join,user,opponent_username.get()])) # dari string diubah ke array
         data = c.http_client([id_room_join,user,opponent_username.get()]) # dari string diubah ke array
 
         if (data == "__NOT_VALID__"): # username tidak valid

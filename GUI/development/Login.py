@@ -5,6 +5,7 @@
     # Rabu, 22 Mei 2024
     # Jumat, 31 Mei 2024
     # Minggu, 2 Juni 2024
+    # Rabu, 4 Juni 2024
 
 # import library
 import tkinter as tk
@@ -29,13 +30,6 @@ def create_login_page(root):
         user = username.get()
         pwd = password.get()
         login_valid = eval(http_client([id_login,user,pwd]))
-        # if user in user_data and user_data[user] == pwd:
-        
-        # if (eval(login_valid)):
-        #     print("login valid")
-        # else :
-        #     print("login not valid")
-
         if (login_valid):
             showinfo(
                 title='Information',
