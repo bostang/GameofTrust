@@ -109,6 +109,15 @@ def show_targeted_matchmaking_func(root, show_start_game_page_func, show_main_pa
                 title='Opponent not Valid Error',
                 message='Opponent not found!'
             )
+
+        # print()
+        elif (not eval(data)): # ketika timeout, server return string : False
+            showinfo(
+            title='Timeout matchmaking',
+            message=f'Anda terkena timeout!'
+            )
+            # kembali ke halaman sebelumnya
+            show_main_page_func(root, show_login_page_func,user)
         else:
             showinfo(
             title='Success finding opponent!',

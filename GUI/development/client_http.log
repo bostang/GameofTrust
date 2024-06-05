@@ -1,0 +1,98 @@
+2024-06-05 08:48:19,225 INFO Request response for message: [1, 'bostang', 'tss'] to server
+2024-06-05 08:48:19,230 DEBUG Starting new HTTP connection (1): 10.8.102.118:8080
+2024-06-05 08:49:06,097 INFO Request response for message: [1, 'bostang', 'tes'] to server
+2024-06-05 08:49:06,102 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:49:07,410 DEBUG http://10.8.105.201:8080 "GET /?data=%5B1,%20%22bostang%22,%20%22tes%22%5D HTTP/1.1" 200 None
+2024-06-05 08:49:07,412 INFO Response from server: True
+2024-06-05 08:49:11,869 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 08:49:11,871 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:49:11,909 DEBUG http://10.8.105.201:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:49:11,915 INFO Response from server: ['yansen']
+2024-06-05 08:49:12,953 INFO Request response for message: [5, 'bostang', ''] to server
+2024-06-05 08:49:12,954 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:49:25,254 DEBUG http://10.8.105.201:8080 "GET /?data=%5B5,%20%22bostang%22,%20%22%22%5D HTTP/1.1" 200 None
+2024-06-05 08:49:25,254 INFO Response from server: False
+2024-06-05 08:49:36,285 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 08:49:36,287 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:49:36,801 DEBUG http://10.8.105.201:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:49:36,802 INFO Response from server: ['yansen', 'bostang']
+2024-06-05 08:50:13,439 INFO Request response for message: [5, 'bostang', 'bostang'] to server
+2024-06-05 08:50:13,442 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:50:25,654 DEBUG http://10.8.105.201:8080 "GET /?data=%5B5,%20%22bostang%22,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:50:25,655 INFO Response from server: False
+2024-06-05 08:51:01,074 INFO Request response for message: [6, 'bostang', 1] to server
+2024-06-05 08:51:01,075 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:51:01,316 DEBUG http://10.8.105.201:8080 "GET /?data=%5B6,%20%22bostang%22,%201%5D HTTP/1.1" 200 None
+2024-06-05 08:51:01,316 INFO Response from server: Room dengan room_id:-1 tidak ditemukan!
+2024-06-05 08:51:03,961 INFO Request response for message: [6, 'bostang', 2] to server
+2024-06-05 08:51:03,963 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:51:05,267 DEBUG http://10.8.105.201:8080 "GET /?data=%5B6,%20%22bostang%22,%202%5D HTTP/1.1" 200 None
+2024-06-05 08:51:05,268 INFO Response from server: Room dengan room_id:-1 tidak ditemukan!
+2024-06-05 08:51:18,249 INFO Request response for message: [1, 'bostang', 'tes'] to server
+2024-06-05 08:51:18,254 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:51:19,088 DEBUG http://10.8.105.201:8080 "GET /?data=%5B1,%20%22bostang%22,%20%22tes%22%5D HTTP/1.1" 200 None
+2024-06-05 08:51:19,089 INFO Response from server: True
+2024-06-05 08:51:21,629 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 08:51:21,631 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:51:23,921 DEBUG http://10.8.105.201:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:51:23,922 INFO Response from server: ['yansen', 'bostang', 'bostang']
+2024-06-05 08:51:42,041 INFO Request response for message: [5, 'bostang', ''] to server
+2024-06-05 08:51:42,042 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:51:53,296 DEBUG http://10.8.105.201:8080 "GET /?data=%5B5,%20%22bostang%22,%20%22%22%5D HTTP/1.1" 200 None
+2024-06-05 08:51:53,297 INFO Response from server: False
+2024-06-05 08:51:56,901 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 08:51:56,903 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:51:57,923 DEBUG http://10.8.105.201:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:51:57,923 INFO Response from server: ['yansen', 'bostang', 'bostang', 'bostang', 'yansen']
+2024-06-05 08:51:58,617 INFO Request response for message: [5, 'bostang', ''] to server
+2024-06-05 08:51:58,619 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:51:59,106 DEBUG http://10.8.105.201:8080 "GET /?data=%5B5,%20%22bostang%22,%20%22%22%5D HTTP/1.1" 200 None
+2024-06-05 08:51:59,106 INFO Response from server: True
+2024-06-05 08:52:03,362 INFO Request response for message: [6, 'bostang', 1] to server
+2024-06-05 08:52:03,363 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:52:11,306 DEBUG http://10.8.105.201:8080 "GET /?data=%5B6,%20%22bostang%22,%201%5D HTTP/1.1" 200 None
+2024-06-05 08:52:11,306 INFO Response from server: [2,2]
+2024-06-05 08:52:29,084 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 08:52:29,086 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:52:29,741 DEBUG http://10.8.105.201:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:52:29,742 INFO Response from server: ['yansen', 'bostang', 'bostang', 'bostang', 'yansen', 'bostang', 'yansen']
+2024-06-05 08:52:31,942 INFO Request response for message: [2, 'bostang'] to server
+2024-06-05 08:52:31,943 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:52:32,016 DEBUG http://10.8.105.201:8080 "GET /?data=%5B2,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:52:32,036 INFO Response from server: 12,[['lord', 9999], ['yansen', 32], ['bostang', 24], ['kunga', 14], ['a', 2], ['newbie', 0]],['bostang', 3, 24]
+2024-06-05 08:52:34,309 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 08:52:34,311 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:52:34,424 DEBUG http://10.8.105.201:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:52:34,425 INFO Response from server: ['yansen', 'bostang', 'bostang', 'bostang', 'yansen', 'bostang', 'yansen', 'bostang']
+2024-06-05 08:52:43,066 INFO Request response for message: [5, 'bostang', 'yansen'] to server
+2024-06-05 08:52:43,069 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:52:43,781 DEBUG http://10.8.105.201:8080 "GET /?data=%5B5,%20%22bostang%22,%20%22yansen%22%5D HTTP/1.1" 200 None
+2024-06-05 08:52:45,809 INFO Response from server: True
+2024-06-05 08:52:49,290 INFO Request response for message: [6, 'bostang', 2] to server
+2024-06-05 08:52:49,292 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:52:49,548 DEBUG http://10.8.105.201:8080 "GET /?data=%5B6,%20%22bostang%22,%202%5D HTTP/1.1" 200 None
+2024-06-05 08:52:49,549 INFO Response from server: [3,-1]
+2024-06-05 08:52:53,239 INFO Request response for message: [2, 'bostang'] to server
+2024-06-05 08:52:53,243 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:52:53,882 DEBUG http://10.8.105.201:8080 "GET /?data=%5B2,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:52:53,884 INFO Response from server: 12,[['lord', 9999], ['yansen', 31], ['bostang', 27], ['kunga', 14], ['a', 2], ['newbie', 0]],['bostang', 3, 27]
+2024-06-05 08:53:00,997 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 08:53:00,998 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:53:01,160 DEBUG http://10.8.105.201:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:53:01,190 INFO Response from server: ['yansen', 'bostang', 'bostang', 'bostang', 'yansen', 'bostang', 'yansen', 'bostang', 'bostang']
+2024-06-05 08:55:42,731 INFO Request response for message: [5, 'bostang', 'yansen'] to server
+2024-06-05 08:55:42,733 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:55:54,629 DEBUG http://10.8.105.201:8080 "GET /?data=%5B5,%20%22bostang%22,%20%22yansen%22%5D HTTP/1.1" 200 None
+2024-06-05 08:55:54,630 INFO Response from server: False
+2024-06-05 08:58:25,052 INFO Request response for message: [1, 'bostang', 'tes'] to server
+2024-06-05 08:58:25,060 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:58:27,949 DEBUG http://10.8.105.201:8080 "GET /?data=%5B1,%20%22bostang%22,%20%22tes%22%5D HTTP/1.1" 200 None
+2024-06-05 08:58:27,949 INFO Response from server: True
+2024-06-05 08:58:30,093 INFO Request response for message: [3, 'bostang'] to server
+2024-06-05 08:58:30,094 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:58:31,134 DEBUG http://10.8.105.201:8080 "GET /?data=%5B3,%20%22bostang%22%5D HTTP/1.1" 200 None
+2024-06-05 08:58:31,134 INFO Response from server: ['yansen', 'bostang', 'bostang', 'bostang', 'yansen', 'bostang', 'yansen', 'bostang', 'bostang', 'bostang', 'yansen']
+2024-06-05 08:58:37,652 INFO Request response for message: [5, 'bostang', 'yansen'] to server
+2024-06-05 08:58:37,654 DEBUG Starting new HTTP connection (1): 10.8.105.201:8080
+2024-06-05 08:58:50,096 DEBUG http://10.8.105.201:8080 "GET /?data=%5B5,%20%22bostang%22,%20%22yansen%22%5D HTTP/1.1" 200 None
+2024-06-05 08:58:50,096 INFO Response from server: False
