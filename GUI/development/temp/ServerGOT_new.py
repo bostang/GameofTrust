@@ -125,7 +125,7 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         user_data_list = ast.literal_eval(user_data)
         if not isinstance(user_data_list, list):
             raise ValueError
-        print(user_data_list)
+        # print(int(user_data_list[0]))
         response = logic(user_data_list)
             # leaderboard
         logging.info(f'Received data: {user_data}')
@@ -235,12 +235,10 @@ def logic(user_data_list):
                 matchmaking[0][1] = id  # Tambahkan id supaya diketahui check pemain satu lagi
                 # remove_active_players(username)
                 response = f'{True}'    # Memberikan room_id 
-                print(matchmaking)  # Debugging untuk melihat array matchmaking
 
             else:
                 matchmaking[0][0] = id  # Tambah request
 
-                print(matchmaking)  # Debugging untuk melihat array matchmaking
                 # Menunggu request pemain lain sampai timeout/ditemukan
                 match_found = False
                 start_time = datetime.now()
@@ -256,9 +254,7 @@ def logic(user_data_list):
                     create_room(matchmaking[0][0], matchmaking[0][1]) # Memberikan room_id dan room
                     response = f'{True}'
 
-
                 matchmaking[0] = [0, 0] # Reset random matchmaking
-                print(matchmaking)  # Debugging untuk melihat array matchmaking
         
         else:   # Targeted matchmaking
             # Melihat jika pemain lain telah membuat request matchmaking
@@ -277,13 +273,10 @@ def logic(user_data_list):
 
                 if match_found1:    # Sudah ada
                     # remove_active_players(username)
-                    response = f'{True}'  # Memberikan room_id  
-                    print(matchmaking)  # Debugging untuk melihat array matchmaking        
+                    response = f'{True}'  # Memberikan room_id          
 
                 else:   # Belum ada
                     matchmaking.append([id, 0]) # Tambah request
-
-                    print(matchmaking)  # Debugging untuk melihat array matchmaking
                     
                     # Menunggu request pemain lain sampai timeout/ditemukan
                     match_found2 = False
@@ -302,9 +295,7 @@ def logic(user_data_list):
                         create_room(id, matchmaking_id) # Memberikan room_id dan room
                         response = f'{True}'
 
-                    
                     matchmaking[:] = [matchmaking_room for matchmaking_room in matchmaking if matchmaking_room[0] != id]    # Menghapus request matchmaking karena timeout
-                    print(matchmaking)  # Debugging untuk melihat array matchmaking
 
     #######################################
     ###### request untuk MATCH START ######
