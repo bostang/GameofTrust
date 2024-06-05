@@ -21,4 +21,4 @@ CHEAT_DRAW_POINT = 0
 # keberhasilan/kegagalan
 
 
-timeout = 10
+timeout = 60

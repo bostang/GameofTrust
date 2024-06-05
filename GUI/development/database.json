@@ -9,7 +9,7 @@
         "id": 2,
         "username": "bostang",
         "password": "tes",
-        "coin": 22
+        "coin": 28
     },
     {
         "id": 3,
@@ -33,6 +33,18 @@
         "id": 6,
         "username": "a",
         "password": "a",
+        "coin": 2
+    },
+    {
+        "id": 7,
+        "username": "",
+        "password": "",
+        "coin": 0
+    },
+    {
+        "id": 8,
+        "username": "b",
+        "password": "b",
         "coin": 2
     }
 ]

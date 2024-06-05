@@ -17,7 +17,7 @@ import json
 from datetime import datetime
 from constant import *
 
-server_ip = "10.8.105.201"
+server_ip = "10.6.105.64"
 matchmaking = [[0, 0]]
 rooms = []   # [room_id, player1_id, player2_id, action1, action2]
 active_players = []
