@@ -295,13 +295,11 @@ def logic(user_data_list):
                                 match_found2 = True
 
                     # remove_active_players(username)
-
                     if (not match_found2):
                         response = f'{False}'  # Memberitahukan pemain bahwa request timeout
                     else:
                         create_room(id, matchmaking_id) # Memberikan room_id dan room
                         response = f'{True}'
-
                     
                     matchmaking[:] = [matchmaking_room for matchmaking_room in matchmaking if matchmaking_room[0] != id]    # Menghapus request matchmaking karena timeout
                     print(matchmaking)  # Debugging untuk melihat array matchmaking
