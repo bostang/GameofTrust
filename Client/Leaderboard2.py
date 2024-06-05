@@ -5,22 +5,25 @@
 import tkinter as tk
 from tkinter import ttk
 import display_leaderboard2 as dl
-# import ServerGOT as sg
 import client2 as c
+from constant import *
 
-def show_leaderboard_page(root, show_main_page_func, show_login_page_func,user):
+def show_leaderboard_page(root, show_main_page_func, show_login_page_func, user):
     for widget in root.winfo_children():
         widget.destroy()
 
     root.title('Leaderboard')
-    title_label = ttk.Label(root, text="Leaderboard Page", font=("Helvetica", 18))
-    title_label.pack(pady=20)
 
-    data = eval(c.socket_client([2,user])) # dari string diubah ke array
+    title_label = ttk.Label(root, text="Leaderboard Page", font=("Helvetica", 18, "bold"), foreground="#333")
+    title_label.pack(pady=10)
+
+    data = eval(c.socket_client([id_leaderboard_request, user]))  # dari string diubah ke array
     print(data)
-    dl.show_leaderboard(root,data)
+    dl.show_leaderboard(root, data)
 
-    back_button = ttk.Button(root, text="Back to Main", command=lambda: show_main_page_func(root, show_login_page_func,user))
-    back_button.pack(fill='x', expand=True, padx=20, pady=5)
+    # Customize back button
+    back_button = tk.Button(root, text="Back to Main", command=lambda: show_main_page_func(root, show_login_page_func, user),
+                            bg="#ff6666", fg="white", font=("Helvetica", 10, "bold"))
+    back_button.place(relx=0.95, rely=0.95, anchor="se")  # Place the button at the bottom-right corner
 
 # END_OF_FILE[]

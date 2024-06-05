@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import ttk
-# import "..\PPLJ\ServerGOT.py"
 
 def create_leaderboard(root, data):
     # Clear existing widgets from the root window
@@ -51,19 +50,8 @@ def create_leaderboard(root, data):
 
 def show_leaderboard(root,data):
     """Show the leaderboard page."""
-    incoming_message_leaderboard = [
-        2,
-        [["bostang", 30], ["yansen", 25], ["kingkung",27],["kungkung",3],["kangkung",4],["kingking",9],["kwingkung",18],["kongking",72],["kwangkweng",70],["kinglung",60]],
-        ["kunga", 17, 31]
-    ]
+   
     create_leaderboard(root, data)
     root.title('Leaderboard')
     root.geometry("400x500")  # Adjusted window size
     root.resizable(False, False)
-
-# if __name__ == "__main__":
-#     # root window
-#     root = tk.Tk()
-#     # data = sg.http_client()
-#     show_leaderboard_page(root,data)
-#     root.mainloop()
