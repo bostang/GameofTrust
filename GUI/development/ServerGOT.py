@@ -52,13 +52,13 @@ def read_from_json_file(filename):
 
 def get_outcome(player1_decision, player2_decision):
     if player1_decision == COOPERATE and player2_decision == COOPERATE:
-        return (DRAW_POINT, DRAW_POINT)  # Both cooperate
+        return (COOPERATE_DRAW_POINT, COOPERATE_DRAW_POINT)  # Both cooperate
     elif player1_decision == COOPERATE and player2_decision == CHEAT:
         return (LOSE_POINT, WIN_POINT)  # Player 1 cooperates, Player 2 cheats
     elif player1_decision == CHEAT and player2_decision == COOPERATE:
         return (WIN_POINT, LOSE_POINT)  # Player 1 cheats, Player 2 cooperates
     elif player1_decision == CHEAT and player2_decision == CHEAT:
-        return (LOSE_POINT, LOSE_POINT)  # Both cheat
+        return (CHEAT_DRAW_POINT, CHEAT_DRAW_POINT)  # Both cheat
 
 def add_active_players(username):
     active_players.append(username)
@@ -211,7 +211,7 @@ def logic(user_data_list):
     elif msg_id == id_become_inactive:   # become inactive
         username = user_data_list[1]
 
-        # remove_active_players(username) # Debugging code
+        remove_active_players(username) # Debugging code
 
         response = f'{active_players}'  # Return currently active player data
 
@@ -295,13 +295,11 @@ def logic(user_data_list):
                                 match_found2 = True
 
                     # remove_active_players(username)
-
                     if (not match_found2):
                         response = f'{False}'  # Memberitahukan pemain bahwa request timeout
                     else:
                         create_room(id, matchmaking_id) # Memberikan room_id dan room
                         response = f'{True}'
-
                     
                     matchmaking[:] = [matchmaking_room for matchmaking_room in matchmaking if matchmaking_room[0] != id]    # Menghapus request matchmaking karena timeout
                     print(matchmaking)  # Debugging untuk melihat array matchmaking
