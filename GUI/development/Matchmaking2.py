@@ -12,7 +12,7 @@ def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page
     # ini adalah callback function ketika button 'start random matchmaking' ditekan
 
     # mengirim request ke server
-    data = eval(c.http_client([id_room_join,user,""])) # dari string diubah ke array
+    data = eval(c.socket_client([id_room_join,user,""])) # dari string diubah ke array
     print("sukses bos!")
     # data = true -> matchmaking berhasil, memulai permainan
     # data = false -> timeout, balik ke start game
@@ -42,7 +42,7 @@ def show_random_matchmaking_func(root, show_start_game_page_func, show_main_page
 
     # button untuk cooperate / cheat
     def on_cooperate():
-        data = eval(c.http_client([id_match_start,user,COOPERATE]))
+        data = eval(c.socket_client([id_match_start,user,COOPERATE]))
         showinfo(
         title='Cooperate chosen',
         message=f'Anda memilih kooperasi!\npoin anda:{data[0]}\npoin lawan:{data[1]}'
